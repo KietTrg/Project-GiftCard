@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
+import Login_screens from "./screens/00_Login/Login_screens"
 
 
 function App() {
@@ -7,7 +8,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route></Route>
+        <Route path="/login" element={<Login_screens/>}></Route>
       </Routes>
     </Router>
   )
