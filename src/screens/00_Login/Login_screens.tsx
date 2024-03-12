@@ -6,7 +6,7 @@ const Login_screens = () => {
   return (
    <>
     
-        <Row className="flex md:justify-center md:items-center items-center justify-center border border-red-500 md:h-full">
+        <Row className="flex md:justify-center md:items-center items-center justify-center  md:h-full">
           <Col className="md:hidden" span={12}><Login_qr/></Col>
           <Col  span={12} ><Login_form/></Col>
         </Row>
