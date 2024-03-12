@@ -1,13 +1,15 @@
-import { Button } from "antd"
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom"
 
 
 function App() {
 
 
   return (
-    <div className='App'>
-      <Button type="primary">Hello</Button>
-    </div>
+    <Router>
+      <Routes>
+        <Route></Route>
+      </Routes>
+    </Router>
   )
 }
 
