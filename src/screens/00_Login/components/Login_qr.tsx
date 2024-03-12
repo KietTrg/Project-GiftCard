@@ -1,11 +1,22 @@
-import React from 'react'
-import Login_Image from '../../../../public/images/Login_Image.png'
+//node_modules
 import { Image } from 'antd'
-
+//components
+//actions
+//selector
+//function
+//constants
+//styled
 
 const Login_qr = () => {
+  // -------------------------- VAR ---------------------------
+  // -------------------------- STATE -------------------------
+  // -------------------------- REDUX -------------------------
+  // -------------------------- FUNCTION ----------------------
+  // -------------------------- EFFECT ------------------------
+  // -------------------------- RENDER ------------------------
+  // -------------------------- MAIN --------------------------
   return (
-    <Image src={Login_Image} height="100vh" style={{padding: '10px', width:'670px', objectFit:'cover'}}/>
+    <Image src='./images/Login_Image.png' height="100vh" style={{padding: '10px', width:'670px', objectFit:'cover'}}/>
   )
 }
 

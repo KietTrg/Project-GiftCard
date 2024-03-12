@@ -1,10 +1,21 @@
-
-import React from 'react'
+//node_modules
+import { Flex } from 'antd'
+//components
 import Login_form_form from './components/Login_form_form'
 import Login_form_title from './components/Login_form_title'
-import { Flex } from 'antd'
-
+//actions
+//selector
+//function
+//constants
+//styled
 const Login_form = () => {
+  // -------------------------- VAR ---------------------------
+  // -------------------------- STATE -------------------------
+  // -------------------------- REDUX -------------------------
+  // -------------------------- FUNCTION ----------------------
+  // -------------------------- EFFECT ------------------------
+  // -------------------------- RENDER ------------------------
+  // -------------------------- MAIN --------------------------
   return (
     <Flex className="md:h-[100vh]" vertical justify='center' align='center' gap='20px'>
       <Login_form_title/>
