@@ -13,10 +13,15 @@ export const them: ThemeConfig = {
             titleMarginBottom: 0,
             titleMarginTop: 0
         },
-        Button:{
-            defaultHoverBg: '#F78E01',
-            defaultBorderColor: '#F78E01',
-            defaultHoverBorderColor: '#F78E01'
+        
+        Layout:{
+            siderBg: '#01227A'
+        },
+        Menu:{
+            itemBg: '#01227A',
+            itemSelectedBg: '#002990',
+            itemSelectedColor: 'white',
+            itemColor: "white"
         }
     }
 }

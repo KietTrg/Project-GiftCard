@@ -14,6 +14,8 @@ import './index.css'
 import 'antd/dist/reset.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-   <ConfigProvider theme={them}> <App /></ConfigProvider>
+    <ConfigProvider theme={them}> 
+      <App />
+    </ConfigProvider>
   </React.StrictMode>,
 )

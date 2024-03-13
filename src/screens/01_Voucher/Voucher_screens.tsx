@@ -1,16 +1,15 @@
 //node_modules
-import { Col, Row } from "antd"
+import { Outlet } from "react-router-dom"
+import {  Layout } from "antd"
 //components
-import Login_form from "./components/Login_form"
-import Login_qr from "./components/Login_qr"
-import { useState } from "react"
+import Voucher_Header from "./components/Voucher_Header"
+import Voucher_SideBar from "./components/Voucher_SideBar"
 //actions
 //selector
 //function
 //constants
 //styled
-
-const Login_screens = () => {
+const Voucher_screens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -19,14 +18,14 @@ const Login_screens = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-   <>
-        <Row className="flex md:justify-center md:items-center items-center justify-center  md:h-full">
-          <Col className="md:hidden" span={12}><Login_qr/></Col>
-          <Col span={12}><Login_form /></Col>
-        </Row>
-   </>
-  
+    <Layout className="min-h-screen relative">
+      <Voucher_SideBar/>
+      <Layout>
+        <Voucher_Header/>
+        <Outlet></Outlet>
+      </Layout>
+  </Layout>
   )
 }
 
-export default Login_screens
+export default Voucher_screens

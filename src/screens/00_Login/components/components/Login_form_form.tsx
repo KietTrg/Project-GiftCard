@@ -1,27 +1,34 @@
 //node_modules
 import { Button, Form, type FormProps, Input, Typography } from 'antd';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 //components
 //actions
 //selector
 //function
 //constants
 //styled
+type FieldType = {
+  username?: string;
+  password?: string;
+
+};
 const Login_form_form = () => {
-  type FieldType = {
-    username?: string;
-    password?: string;
-  
-  };
   // -------------------------- VAR ---------------------------
+  const navigate = useNavigate()
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
   // -------------------------- FUNCTION ----------------------
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log('Success:', values);
+    if(values){
+      navigate('/')
+    }
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
+  
   // -------------------------- EFFECT ------------------------
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
@@ -49,9 +56,9 @@ const Login_form_form = () => {
         <Input.Password placeholder='Password'/>
       </Form.Item>
       <Form.Item>
-        <Button className='bg-gradient-to-l to-[#FFC120] from-[#F78E01] w-full border-none'htmlType="submit">
+        <button className='p-2 rounded-md bg-gradient-to-l to-[#FFC120] from-[#F78E01] w-full border-none'type="submit">
           <Typography.Text strong >Log In</Typography.Text>
-        </Button>
+        </button>
       </Form.Item>
     </Form>
   );

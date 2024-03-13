@@ -8,6 +8,10 @@ import Login_form_title from './components/Login_form_title'
 //function
 //constants
 //styled
+type Props ={
+  isLogin: boolean;
+  setIsLogin?: () => boolean
+}
 const Login_form = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------

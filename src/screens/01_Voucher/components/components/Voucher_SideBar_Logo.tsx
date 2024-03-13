@@ -1,16 +1,12 @@
 //node_modules
-import { Col, Row } from "antd"
+import { Image, Space, Typography } from 'antd'
 //components
-import Login_form from "./components/Login_form"
-import Login_qr from "./components/Login_qr"
-import { useState } from "react"
 //actions
 //selector
 //function
 //constants
 //styled
-
-const Login_screens = () => {
+const Voucher_Logo = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -19,14 +15,11 @@ const Login_screens = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-   <>
-        <Row className="flex md:justify-center md:items-center items-center justify-center  md:h-full">
-          <Col className="md:hidden" span={12}><Login_qr/></Col>
-          <Col span={12}><Login_form /></Col>
-        </Row>
-   </>
-  
+   <Space className='m-4 flex gap-3 items-center'>
+       <Image width='54px'  src='../images/Icon_Dashboard.png'></Image>
+       <Typography.Title style={{color:'white'}} level={3}>GIFTCARD</Typography.Title>
+   </Space>
   )
 }
 
-export default Login_screens
+export default Voucher_Logo
