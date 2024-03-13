@@ -1,7 +1,6 @@
 //node_modules
-import { Button, Col, Divider, Flex, Form, Layout, Row, Typography,  Input, DatePicker } from 'antd'
+import { Col, Flex, Row, Form, Input, Divider, DatePicker, Space } from 'antd'
 import TextArea from 'antd/es/input/TextArea';
-import { Content } from 'antd/es/layout/layout'
 import dayjs from 'dayjs';
 //components
 //actions
@@ -18,7 +17,7 @@ type FieldType = {
     description?: string;
     address?: string;
   };
-const Voucher_Create = () => {
+const CreateVoucher_Content_Form = () => {
     // -------------------------- VAR ---------------------------
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
@@ -26,28 +25,13 @@ const Voucher_Create = () => {
     // -------------------------- EFFECT ------------------------
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
+
   return (
-  <Content className='p-8'>
-    <Layout className='p-6 bg-white rounded-md'>
-        <Flex justify='space-between'>
-            <div>
-                <Typography.Title level={5}>Tổng quan</Typography.Title>
-                <Typography.Paragraph style={{color: 'black'}}>Thiết lập tạo voucher</Typography.Paragraph>
-            </div>
-            <div>
-                <div className='flex items-center justify-center gap-3'>
-                    <Button type='default'>Hủy</Button>
-                    <Button style={{background: "linear-gradient(96deg, rgb(250, 148, 6) 6.19%, rgb(254, 188, 29) 97.63%)", border: 'none' }} type='primary'>Lưu</Button>
-                </div>
-            </div>
-        </Flex>
-        <Divider></Divider>
-        <Flex vertical>
-           
+    <Flex vertical>
                 <Row >
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Số lượng" required></Form.Item>
+                            <Form.Item<FieldType> label="Số lượng" required name='amount'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
@@ -58,7 +42,7 @@ const Voucher_Create = () => {
                 <Row>
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Ngày hết hạn" required></Form.Item>
+                            <Form.Item<FieldType> label="Ngày hết hạn" required name='expireDate'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
@@ -69,49 +53,43 @@ const Voucher_Create = () => {
                 <Row>
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Giá" required></Form.Item>
+                            <Form.Item<FieldType> label="Giá" required name='price'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
                         <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
-                        <div className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7'>
-                            <span className='text-white'>đ</span>
-                        </div>
+                        <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
                     </Col>
                     <Divider></Divider>
                 </Row>
                 <Row>
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Giá khuyến mãi" required></Form.Item>
+                            <Form.Item<FieldType> label="Giá khuyến mãi" required name='promote'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
                         <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
-                        <div className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7'>
-                            <span className='text-white'>đ</span>
-                        </div>
+                        <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
                     </Col>
                     <Divider></Divider>
                 </Row>
                 <Row>
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Giá Trị" required></Form.Item>
+                            <Form.Item<FieldType> label="Giá Trị" required name='value'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
                         <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
-                        <div className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7'>
-                            <span className='text-white'>đ</span>
-                        </div>
+                        <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
                     </Col>
                     <Divider></Divider>
                 </Row>
                 <Row>
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Điều kiện sử dụng" required></Form.Item>
+                            <Form.Item<FieldType> label="Điều kiện sử dụng" required name='description'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
@@ -122,7 +100,7 @@ const Voucher_Create = () => {
                 <Row>
                     <Col span={12}>
                         <Form>
-                            <Form.Item<FieldType> label="Địa chỉ" required></Form.Item>
+                            <Form.Item<FieldType> label="Địa chỉ" required name='address'></Form.Item>
                         </Form>
                     </Col>
                     <Col span={12}>
@@ -131,9 +109,7 @@ const Voucher_Create = () => {
                     <Divider></Divider>
                 </Row>
         </Flex>
-    </Layout>
-    </Content>
   )
 }
 
-export default Voucher_Create
+export default CreateVoucher_Content_Form

@@ -1,7 +1,7 @@
 //node_modules
 import { useEffect, useState } from "react"
-import { Link, useLocation } from "react-router-dom"
-import { Dropdown, Typography } from "antd"
+import { useLocation, useNavigate } from "react-router-dom"
+import { Button, Dropdown, Typography } from "antd"
 import { Header } from "antd/es/layout/layout"
 //components
 //actions
@@ -9,9 +9,15 @@ import { Header } from "antd/es/layout/layout"
 //function
 //constants
 //styled
-const Voucher_Header = () => {
+type Props = {
+  isLogin: boolean;
+  logout: () => void
+}
+const Voucher_Header = ({isLogin, logout}: Props) => {
  // -------------------------- VAR ---------------------------
  const pathname = useLocation()
+ const navigate = useNavigate()
+
  // -------------------------- STATE -------------------------
  const [changeName, setChangeName] = useState<string>('Voucher')
  // -------------------------- REDUX -------------------------
@@ -28,17 +34,22 @@ const Voucher_Header = () => {
       setChangeName('Quản lý voucher')
     }
   },[pathname])
+  useEffect(()=>{
+    if(!isLogin){
+      navigate('/login')
+    }
+  },[isLogin])
  // -------------------------- RENDER ------------------------
  // -------------------------- MAIN --------------------------
   return (
     <Header className="bg-white h-[79px] flex items-center justify-between">
         <Typography.Title level={2} style={{color:'GrayText'}}>{changeName as string}</Typography.Title>
-            <Dropdown menu={{items:[{
+            {isLogin && <Dropdown menu={{items:[{
               key: '1',
               label:(
-                <Link to='/login'>Đăng xuất</Link>
+                <Button style={{border:'none'}} onClick={logout}>Đăng xuất</Button>
               )
-            }]}}><img className="rounded-full w-[40px] h-[40px]" src="../images/Logo_Header.png"></img></Dropdown>
+            }]}}><img className="rounded-full w-[40px] h-[40px]" src="../images/Logo_Header.png"></img></Dropdown>}
     </Header>
   )
 }

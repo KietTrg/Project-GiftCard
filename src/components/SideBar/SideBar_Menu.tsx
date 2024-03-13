@@ -2,7 +2,7 @@
 import { GetProp, Menu, MenuProps } from "antd"
 import { Link } from "react-router-dom"
 //components
-import { iconQuanLyVoucher, iconTaoVoucher, iconVoucher } from "../../../../components/svg/iconDashboard"
+import { iconQuanLyVoucher, iconTaoVoucher, iconVoucher } from "../svg/iconDashboard"
 //actions
 //selector
 //function

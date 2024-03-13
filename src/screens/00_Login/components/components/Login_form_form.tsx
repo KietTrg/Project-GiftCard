@@ -1,13 +1,15 @@
 //node_modules
-import { Button, Form, type FormProps, Input, Typography } from 'antd';
-import { useState } from 'react';
+import { Form, type FormProps, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../../context/authContext';
+import { useContext } from 'react';
 //components
 //actions
 //selector
 //function
 //constants
 //styled
+
 type FieldType = {
   username?: string;
   password?: string;
@@ -16,13 +18,16 @@ type FieldType = {
 const Login_form_form = () => {
   // -------------------------- VAR ---------------------------
   const navigate = useNavigate()
+  const {login, isLogin} =  useContext(AuthContext)
+  console.log('isLogin: ', isLogin);
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
   // -------------------------- FUNCTION ----------------------
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
     console.log('Success:', values);
     if(values){
-      navigate('/')
+     login()
+     navigate('/')
     }
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
@@ -56,9 +61,7 @@ const Login_form_form = () => {
         <Input.Password placeholder='Password'/>
       </Form.Item>
       <Form.Item>
-        <button className='p-2 rounded-md bg-gradient-to-l to-[#FFC120] from-[#F78E01] w-full border-none'type="submit">
-          <Typography.Text strong >Log In</Typography.Text>
-        </button>
+      <Button style={{background: "linear-gradient(96deg, rgb(250, 148, 6) 6.19%, rgb(254, 188, 29) 97.63%)", border: 'none', width:'100%'}} htmlType='submit' type='primary'>Log In</Button>
       </Form.Item>
     </Form>
   );

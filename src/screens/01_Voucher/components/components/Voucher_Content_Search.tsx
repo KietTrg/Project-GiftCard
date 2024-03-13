@@ -1,15 +1,14 @@
 //node_modules
+import { Button, Col, Input, Row } from 'antd'
 //components
-import Voucher_Content from "./components/Voucher_Content"
 //actions
 //selector
 //function
 //constants
 //styled
 
-
-const Voucher = () => { 
-  // -------------------------- VAR ---------------------------
+const Voucher_Content_Search = () => {
+  // -------------------------- VAR -------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
   // -------------------------- FUNCTION ----------------------
@@ -17,8 +16,17 @@ const Voucher = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <Voucher_Content/>
+    <Row className='flex gap-2'>
+    <Col className='py-2'>
+      <Input className='h-[40px]' placeholder='Nhập mã voucher'></Input>
+    </Col>
+    <Col className='py-2'>
+      <Button type='primary' >
+        Tìm kiếm
+      </Button>
+    </Col>
+  </Row>
   )
 }
 
-export default Voucher
+export default Voucher_Content_Search

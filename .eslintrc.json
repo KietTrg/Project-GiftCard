@@ -18,7 +18,7 @@
         "react"
     ],
     "rules": {
-        "import no use": "error",
-        "no-use-before-define": "error"
+        "@typescript-eslint/no-require-imports": "error",
+        "@typescript-eslint/no-use-before-define": "error"
     }
 }

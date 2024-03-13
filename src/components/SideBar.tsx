@@ -1,15 +1,15 @@
 //node_modules
-import { Col, Row } from "antd"
+import Sider from "antd/es/layout/Sider"
 //components
-import Login_form from "./components/Login_form"
-import Login_qr from "./components/Login_qr"
+import Voucher_Logo from "./SideBar/SideBar_Logo"
+import Voucher_Menu from "./SideBar/SideBar_Menu"
+import { Space } from "antd"
 //actions
 //selector
 //function
 //constants
 //styled
-
-const Login_screens = () => {
+const Voucher_SideBar = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -18,14 +18,13 @@ const Login_screens = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-   <>
-        <Row className="flex md:justify-center md:items-center items-center justify-center  md:h-full">
-          <Col className="md:hidden" span={12}><Login_qr/></Col>
-          <Col span={12}><Login_form /></Col>
-        </Row>
-   </>
-  
+    <Sider width="250px" className="relative" >
+      <Space direction="vertical" className="flex-none fixed top-0 bottom-0 w-[250px]">
+        <Voucher_Logo/>
+        <Voucher_Menu/>
+      </Space>
+  </Sider>
   )
 }
 
-export default Login_screens
+export default Voucher_SideBar

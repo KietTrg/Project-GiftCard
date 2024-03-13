@@ -1,14 +1,15 @@
 //node_modules
-import Sider from "antd/es/layout/Sider"
+import { Layout } from 'antd'
+import { Content } from 'antd/es/layout/layout'
 //components
-import Voucher_Logo from "./components/Voucher_SideBar_Logo"
-import Voucher_Menu from "./components/Voucher_SideBar_Menu"
+import Voucher_Content_Search from './components/Voucher_Content_Search'
+import Voucher_Content_Table from './components/Voucher_Content_Table'
 //actions
 //selector
 //function
 //constants
 //styled
-const Voucher_SideBar = () => {
+const Voucher_Content = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,13 +18,13 @@ const Voucher_SideBar = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <Sider width="250px" className="relative" >
-      <div className="flex-none fixed top-0 bottom-0 w-[250px]">
-        <Voucher_Logo/>
-        <Voucher_Menu/>
-      </div>
-  </Sider>
+    <Content className='p-8'>
+      <Layout className='p-6 bg-white rounded-md'>
+        <Voucher_Content_Search/>
+        <Voucher_Content_Table/>
+      </Layout>
+    </Content>
   )
 }
 
-export default Voucher_SideBar
+export default Voucher_Content

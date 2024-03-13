@@ -1,15 +1,14 @@
 //node_modules
-import { Col, Row } from "antd"
 //components
-import Login_form from "./components/Login_form"
-import Login_qr from "./components/Login_qr"
+import ManageVoucher_Content from "./components/ManageVoucher_Content"
 //actions
 //selector
 //function
 //constants
 //styled
 
-const Login_screens = () => {
+
+const VoucherManger = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,15 +16,10 @@ const Login_screens = () => {
   // -------------------------- EFFECT ------------------------
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
+
   return (
-   <>
-        <Row className="flex md:justify-center md:items-center items-center justify-center  md:h-full">
-          <Col className="md:hidden" span={12}><Login_qr/></Col>
-          <Col span={12}><Login_form /></Col>
-        </Row>
-   </>
-  
+    <ManageVoucher_Content/>
   )
 }
 
-export default Login_screens
+export default VoucherManger

@@ -2,6 +2,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { ConfigProvider } from 'antd'
+import { AuthProvider } from './context/authContext.tsx'
 //components
 import App from './App.tsx'
 //actions
@@ -14,8 +15,10 @@ import './index.css'
 import 'antd/dist/reset.css'
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ConfigProvider theme={them}> 
-      <App />
-    </ConfigProvider>
+      <AuthProvider>
+        <ConfigProvider theme={them}> 
+          <App />
+        </ConfigProvider>
+      </AuthProvider>
   </React.StrictMode>,
 )
