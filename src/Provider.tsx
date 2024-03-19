@@ -16,7 +16,7 @@ const Provider = () => {
 
   return (
     <Provider>
-        
+
     </Provider>
   )
 }
