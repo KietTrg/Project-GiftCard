@@ -2,14 +2,14 @@
 import { Layout } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 //components
-import Voucher_Content_Search from './components/Voucher_Content_Search'
-import Voucher_Content_Table from './components/Voucher_Content_Table'
+import VoucherContentSearch from './components/Voucher_Content_Search'
+import VoucherContentTable from './components/Voucher_Content_Table'
 //actions
 //selector
 //function
 //constants
 //styled
-const Voucher_Content = () => {
+const VoucherContent = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -20,11 +20,11 @@ const Voucher_Content = () => {
   return (
     <Content className='p-8'>
       <Layout className='p-6 bg-white rounded-md'>
-        <Voucher_Content_Search/>
-        <Voucher_Content_Table/>
+        <VoucherContentSearch />
+        <VoucherContentTable />
       </Layout>
     </Content>
   )
 }
 
-export default Voucher_Content
+export default VoucherContent

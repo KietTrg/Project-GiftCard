@@ -26,7 +26,7 @@ type optionSelectType = {
 }
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
-const CreateAdmin_Content_Form = () => {
+const CreateAdminContentForm = () => {
     // -------------------------- VAR ---------------------------
     const optionSelect: optionSelectType[] = [
         { value: 'Bạc Liêu', label: 'Bạc Liêu' },
@@ -172,4 +172,4 @@ const CreateAdmin_Content_Form = () => {
     )
 }
 
-export default CreateAdmin_Content_Form
+export default CreateAdminContentForm

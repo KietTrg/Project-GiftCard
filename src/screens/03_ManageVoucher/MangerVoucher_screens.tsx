@@ -1,6 +1,6 @@
 //node_modules
 //components
-import ManageVoucher_Content from "./components/ManageVoucher_Content"
+import ManageVoucherContent from "./components/ManageVoucher_Content"
 //actions
 //selector
 //function
@@ -8,7 +8,7 @@ import ManageVoucher_Content from "./components/ManageVoucher_Content"
 //styled
 
 
-const VoucherManger = () => {
+const VoucherMangerScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,8 +17,8 @@ const VoucherManger = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <ManageVoucher_Content />
+    <ManageVoucherContent />
   )
 }
 
-export default VoucherManger
+export default VoucherMangerScreens

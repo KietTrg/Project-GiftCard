@@ -8,7 +8,7 @@ import { iconConvert } from "../../../../components/svg/iconDashboard"
 import { formatMoney } from "../../../../util/formatMoney"
 //constants
 //styled
-const GeneralAdmin_Content_Items = () => {
+const GeneralAdminContentItems = () => {
     // -------------------------- VAR ---------------------------
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
@@ -17,9 +17,9 @@ const GeneralAdmin_Content_Items = () => {
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
     return (
-        <Row gutter={[24, 16]}  >
-            <Col span={6}>
-                <Card style={{ width: '280px', padding: '8px' }}>
+        <Row gutter={[{ xl: 16, md: 16, xs: 6 }, { xl: 16, md: 16, xs: 16 }]}>
+            <Col xl={6} md={12} xs={24} >
+                <Card style={{ width: '100%', padding: '8px' }}>
                     <Flex vertical gap={10}>
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem1.png"></Image>
                         <Typography.Text>Số lượng giao dịch trong ngày</Typography.Text>
@@ -30,8 +30,8 @@ const GeneralAdmin_Content_Items = () => {
                     </Flex>
                 </Card>
             </Col>
-            <Col span={6}>
-                <Card style={{ width: '280px', padding: '8px' }}>
+            <Col xl={6} md={12} xs={24}>
+                <Card style={{ width: '100%', padding: '8px' }}>
                     <Flex vertical gap={10}>
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem2.png"></Image>
                         <Typography.Text>Số lượng người truy cập</Typography.Text>
@@ -44,8 +44,8 @@ const GeneralAdmin_Content_Items = () => {
                     </Flex>
                 </Card>
             </Col>
-            <Col span={6}>
-                <Card style={{ width: '280px', padding: '8px' }}>
+            <Col xl={6} md={12} xs={24}>
+                <Card style={{ width: '100%', padding: '8px' }}>
                     <Flex vertical gap={10}>
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem3.png"></Image>
                         <Typography.Text>Tổng số tiền user quy đổi</Typography.Text>
@@ -58,8 +58,8 @@ const GeneralAdmin_Content_Items = () => {
                     </Flex>
                 </Card>
             </Col>
-            <Col span={6}>
-                <Card style={{ width: '280px', padding: '8px' }}>
+            <Col xl={6} md={12} xs={24}>
+                <Card style={{ width: '100%', padding: '8px' }}>
                     <Flex vertical gap={10}>
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem4.png"></Image>
                         <Typography.Text>Số lượng quy đổi</Typography.Text>
@@ -72,8 +72,8 @@ const GeneralAdmin_Content_Items = () => {
                     </Flex>
                 </Card>
             </Col>
-            <Col span={6}>
-                <Card style={{ width: '280px', padding: '8px' }}>
+            <Col xl={6} md={12} xs={24}>
+                <Card style={{ width: '100%', padding: '8px' }}>
                     <Flex vertical gap={10}>
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem5.png"></Image>
                         <Typography.Text>Số lượng ký quỹ còn lại</Typography.Text>
@@ -91,4 +91,4 @@ const GeneralAdmin_Content_Items = () => {
     )
 }
 
-export default GeneralAdmin_Content_Items
+export default GeneralAdminContentItems

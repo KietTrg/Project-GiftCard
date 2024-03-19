@@ -1,19 +1,19 @@
 //node_modules
 import Sider from "antd/es/layout/Sider"
 //components
-import Voucher_Logo from "./SideBar/SideBar_Logo"
-import Voucher_Menu from "./SideBar/SideBar_Menu"
-import { Space } from "antd"
-import Admin_Menu from "./SideBar/SideBar_Admin"
+import AdminMenu from "./SideBar/SideBar_Admin"
+import VoucherMenu from "./SideBar/SideBar_Menu"
+import SideLogo from "./SideBar/SideBar_Logo"
 //actions
 //selector
 //function
 //constants
 //styled
 type Props = {
-  isAdmin: boolean
+  isAdmin: boolean;
+
 }
-const Voucher_SideBar = ({isAdmin}: Props) => {
+const SideBar = ({ isAdmin }: Props) => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -22,13 +22,25 @@ const Voucher_SideBar = ({isAdmin}: Props) => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <Sider width="250px" className="relative" >
-      <Space direction="vertical" className="flex-none fixed top-0 bottom-0 w-[250px]">
-        <Voucher_Logo/>
-        {isAdmin ?<Admin_Menu/> : <Voucher_Menu/>}
-      </Space>
-  </Sider>
+
+    <Sider
+      breakpoint="xl"
+      collapsedWidth="0"
+      onBreakpoint={(broken) => {
+        console.log(broken);
+      }}
+      width='15%'
+      style={{ minHeight: '100vh', left: 0, top: 0, bottom: 0 }}
+      onCollapse={(collapsed, type) => {
+        console.log(collapsed, type);
+      }}
+    >
+      <SideLogo />
+      {isAdmin ? <AdminMenu /> : <VoucherMenu />}
+
+    </Sider>
+
   )
 }
 
-export default Voucher_SideBar
+export default SideBar

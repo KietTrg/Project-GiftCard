@@ -1,12 +1,12 @@
 //components
 //node_modules
-import CreateAdmin_Content from "./components/CreateAdmin_Content"
+import CreateAdminContent from "./components/CreateAdmin_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-const CreateAdmin = () => {
+const CreateAdminScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -15,8 +15,8 @@ const CreateAdmin = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <CreateAdmin_Content />
+    <CreateAdminContent />
   )
 }
 
-export default CreateAdmin
+export default CreateAdminScreens

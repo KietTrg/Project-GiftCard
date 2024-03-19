@@ -21,7 +21,8 @@ export const them: ThemeConfig = {
             itemBg: '#01227A',
             itemSelectedBg: '#002990',
             itemSelectedColor: 'white',
-            itemColor: "white"
+            itemColor: "white",
+            itemHoverColor: 'white'
         }
     }
 }

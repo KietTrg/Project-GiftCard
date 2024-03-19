@@ -7,7 +7,7 @@ import { Flex, Typography } from "antd"
 //constants
 //styled
 
-const Login_form_title = () => {
+const LoginFormTitle = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -26,4 +26,4 @@ const Login_form_title = () => {
   )
 }
 
-export default Login_form_title
+export default LoginFormTitle

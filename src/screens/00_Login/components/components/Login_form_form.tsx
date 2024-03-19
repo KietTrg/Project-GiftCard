@@ -15,7 +15,7 @@ type FieldType = {
   password?: string;
 
 };
-const Login_form_form = () => {
+const LoginFormForm = () => {
   // -------------------------- VAR ---------------------------
   const navigate = useNavigate()
   const { login, isLogin } = useContext(AuthContext)
@@ -68,7 +68,7 @@ const Login_form_form = () => {
     </Form>
   );
 };
-export default Login_form_form;
+export default LoginFormForm;
 
 
 

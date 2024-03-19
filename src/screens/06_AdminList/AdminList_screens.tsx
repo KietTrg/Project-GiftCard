@@ -1,12 +1,12 @@
 //node_modules
 //components
-import AdminList_Content from "./components/AdminList_Content"
+import AdminListContent from "./components/AdminList_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-const AdminList = () => {
+const AdminListScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -15,8 +15,8 @@ const AdminList = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <AdminList_Content />
+    <AdminListContent />
   )
 }
 
-export default AdminList
+export default AdminListScreens

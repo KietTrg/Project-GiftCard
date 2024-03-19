@@ -12,7 +12,7 @@ import { iconAdminList, iconCreateAdmin, iconDeposit, iconGeneral } from "../svg
 
 type MenuItem = GetProp<MenuProps, 'items'>[number]
 
-const Admin_Menu = () => {
+const AdminMenu = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -34,20 +34,25 @@ const Admin_Menu = () => {
   // -------------------------- EFFECT ------------------------
   // -------------------------- RENDER ------------------------
   const items: MenuItem[] = [
-    getItem(<Link to='/admin/general' >Tổng quan</Link>, 'general', iconGeneral()),
+    getItem(<Link to='/admin/general'  >Tổng quan</Link>, 'general', iconGeneral()),
     getItem(<Link to='/admin'>Tạo admin</Link>, 'Create-admin', iconCreateAdmin()),
     getItem(<Link to='/admin/admin-list'>Danh sách Admin</Link>, 'admin-list', iconAdminList()),
     getItem(<Link to='/admin/deposit'>Ký quỹ</Link>, 'deposit', iconDeposit())
   ]
   // -------------------------- MAIN --------------------------
+
   return (
+
+
     <Menu
+      mode="inline"
       defaultSelectedKeys={['Create-admin']}
-      className="flex flex-col items-center mr-10"
+      style={{ paddingRight: 20 }}
       items={items}
     >
     </Menu>
+
   )
 }
 
-export default Admin_Menu
+export default AdminMenu

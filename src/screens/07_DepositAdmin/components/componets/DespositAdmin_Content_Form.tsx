@@ -13,7 +13,7 @@ type DataType = {
     dateDeposit: Dayjs | string;
     amountDeposit: number;
 }
-const DepositAdmin_Content_Form = () => {
+const DepositAdminContentForm = () => {
     // -------------------------- VAR ---------------------------
     const columns: TableProps<DataType>['columns'] = [
         {
@@ -25,7 +25,7 @@ const DepositAdmin_Content_Form = () => {
             title: 'Số tiền ký quỹ (VND)',
             dataIndex: 'amountDeposit',
             key: 'amountDeposit',
-            render: () => <Typography.Text>{formatMoney(50000000)}</Typography.Text>
+            render: (value) => <Typography.Text>{formatMoney(value)}</Typography.Text>
         },
         {
             title: '',
@@ -42,6 +42,11 @@ const DepositAdmin_Content_Form = () => {
             key: '1',
             dateDeposit: '20/03/2024 17:28:42',
             amountDeposit: 50000000
+        },
+        {
+            key: '2',
+            dateDeposit: '20/03/2024 17:28:42',
+            amountDeposit: 70000000
         },
     ];
     // -------------------------- STATE -------------------------
@@ -77,4 +82,4 @@ const DepositAdmin_Content_Form = () => {
     )
 }
 
-export default DepositAdmin_Content_Form
+export default DepositAdminContentForm

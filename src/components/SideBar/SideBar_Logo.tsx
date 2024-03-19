@@ -6,7 +6,7 @@ import { Image, Space, Typography } from 'antd'
 //function
 //constants
 //styled
-const Voucher_Logo = () => {
+const SideLogo = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -15,11 +15,11 @@ const Voucher_Logo = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-   <Space className='m-4 flex gap-3 items-center'>
-       <Image width='54px'  src='../images/Icon_Dashboard.png'></Image>
-       <Typography.Title style={{color:'white'}} level={3}>GIFTCARD</Typography.Title>
-   </Space>
+    <Space className='m-4 flex gap-3 items-center'>
+      <Image preview={false} width='54px' src='../images/Icon_Dashboard.png'></Image>
+      <Typography.Title style={{ color: 'white' }} level={3}>GIFTCARD</Typography.Title>
+    </Space>
   )
 }
 
-export default Voucher_Logo
+export default SideLogo

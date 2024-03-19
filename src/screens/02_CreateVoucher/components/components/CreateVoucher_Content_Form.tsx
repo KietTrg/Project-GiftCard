@@ -16,8 +16,8 @@ type FieldType = {
     value?: number;
     description?: string;
     address?: string;
-  };
-const CreateVoucher_Content_Form = () => {
+};
+const CreateVoucherContentForm = () => {
     // -------------------------- VAR ---------------------------
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
@@ -26,90 +26,90 @@ const CreateVoucher_Content_Form = () => {
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
 
-  return (
-    <Flex vertical>
-                <Row >
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Số lượng" required name='amount'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <Input style={{paddingTop: '7px', paddingBottom: '7px'}} type='number' min={0} placeholder='0'></Input>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-                <Row>
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Ngày hết hạn" required name='expireDate'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <DatePicker className='w-full py-2' format={'DD-MM-YYYY HH:mm:ss'} defaultValue={dayjs(Date.now()+86400000)}></DatePicker>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-                <Row>
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Giá" required name='price'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
-                        <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-                <Row>
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Giá khuyến mãi" required name='promote'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
-                        <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-                <Row>
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Giá Trị" required name='value'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
-                        <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-                <Row>
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Điều kiện sử dụng" required name='description'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <TextArea style={{height:100}} placeholder='Nhập điều kiện sử dụng....'></TextArea>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-                <Row>
-                    <Col span={12}>
-                        <Form>
-                            <Form.Item<FieldType> label="Địa chỉ" required name='address'></Form.Item>
-                        </Form>
-                    </Col>
-                    <Col span={12}>
-                        <TextArea style={{height:100}} placeholder='Nhập địa chỉ...'></TextArea>
-                    </Col>
-                    <Divider></Divider>
-                </Row>
-    </Flex>
-  )
+    return (
+        <Flex vertical>
+            <Row >
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Số lượng" required name='amount'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <Input style={{ paddingTop: '7px', paddingBottom: '7px' }} type='number' min={0} placeholder='0'></Input>
+                </Col>
+                <Divider></Divider>
+            </Row>
+            <Row>
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Ngày hết hạn" required name='expireDate'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <DatePicker className='w-full py-2' format={'DD-MM-YYYY HH:mm:ss'} defaultValue={dayjs(Date.now() + 86400000)}></DatePicker>
+                </Col>
+                <Divider></Divider>
+            </Row>
+            <Row>
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Giá" required name='price'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
+                    <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
+                </Col>
+                <Divider></Divider>
+            </Row>
+            <Row>
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Giá khuyến mãi" required name='promote'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
+                    <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
+                </Col>
+                <Divider></Divider>
+            </Row>
+            <Row>
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Giá Trị" required name='value'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <Input className='py-2 relative' suffix type='number' min={0} placeholder='0'></Input>
+                    <Space align='center' className='absolute bg-black w-8 z-20 h-8 flex items-center justify-center rounded-md top-1 right-7 text-white'>đ</Space>
+                </Col>
+                <Divider></Divider>
+            </Row>
+            <Row>
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Điều kiện sử dụng" required name='description'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <TextArea style={{ height: 100 }} placeholder='Nhập điều kiện sử dụng....'></TextArea>
+                </Col>
+                <Divider></Divider>
+            </Row>
+            <Row>
+                <Col span={12}>
+                    <Form>
+                        <Form.Item<FieldType> label="Địa chỉ" required name='address'></Form.Item>
+                    </Form>
+                </Col>
+                <Col span={12}>
+                    <TextArea style={{ height: 100 }} placeholder='Nhập địa chỉ...'></TextArea>
+                </Col>
+                <Divider></Divider>
+            </Row>
+        </Flex>
+    )
 }
 
-export default CreateVoucher_Content_Form
+export default CreateVoucherContentForm

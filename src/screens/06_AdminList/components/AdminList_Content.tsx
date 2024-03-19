@@ -19,7 +19,7 @@ interface DataType {
     description?: string;
     roles?: string;
 }
-const AdminList_Content = () => {
+const AdminListContent = () => {
     // -------------------------- VAR ---------------------------
     const columns: TableColumnsType<DataType> = [
         { title: 'User Name', width: 150, dataIndex: 'name', key: '1' },
@@ -101,4 +101,4 @@ const AdminList_Content = () => {
     )
 }
 
-export default AdminList_Content
+export default AdminListContent

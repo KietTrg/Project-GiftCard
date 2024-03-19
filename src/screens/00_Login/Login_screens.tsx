@@ -1,15 +1,15 @@
 //node_modules
 import { Col, Row } from "antd"
 //components
-import Login_form from "./components/Login_form"
-import Login_qr from "./components/Login_qr"
+import LoginForm from "./components/Login_form"
+import LoginImage from "./components/LoginImage"
 //actions
 //selector
 //function
 //constants
 //styled
 
-const Login_screens = () => {
+const LoginScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -18,14 +18,14 @@ const Login_screens = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-   <>
-        <Row className="flex md:justify-center md:items-center items-center justify-center  md:h-full">
-          <Col className="md:hidden" span={12}><Login_qr/></Col>
-          <Col span={12}><Login_form /></Col>
-        </Row>
-   </>
-  
+
+    <Row className="flex items-center justify-center md:h-full md:justify-center md:items-center lg:h-[100vh] lg:justify-center lg:items-center ">
+      <Col className=" lg:hidden " span={12}><LoginImage /></Col>
+      <Col span={12}><LoginForm /></Col>
+    </Row>
+
+
   )
 }
 
-export default Login_screens
+export default LoginScreens

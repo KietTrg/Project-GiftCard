@@ -6,7 +6,7 @@ import { Button, Flex, Space, Typography } from "antd"
 //function
 //constants
 //styled
-const CreateAdmin_Content_Header = () => {
+const CreateAdminContentHeader = () => {
     // -------------------------- VAR ---------------------------
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
@@ -21,7 +21,7 @@ const CreateAdmin_Content_Header = () => {
                 <Typography.Paragraph style={{ color: 'black' }}>Thiết lập tạo tài khoản admin</Typography.Paragraph>
             </Space>
             <Space>
-                <Space>
+                <Space size={8}>
                     <Button type='default'>Hủy</Button>
                     <Button style={{ background: "linear-gradient(96deg, rgb(250, 148, 6) 6.19%, rgb(254, 188, 29) 97.63%)", border: 'none' }} type='primary'>Lưu</Button>
                 </Space>
@@ -30,4 +30,4 @@ const CreateAdmin_Content_Header = () => {
     )
 }
 
-export default CreateAdmin_Content_Header
+export default CreateAdminContentHeader

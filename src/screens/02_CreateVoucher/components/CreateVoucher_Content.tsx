@@ -2,31 +2,31 @@
 import { Divider, Layout } from 'antd'
 import { Content } from 'antd/es/layout/layout'
 //components
-import CreateVoucher_Content_Header from './components/CreateVoucher_Content_Header'
-import CreateVoucher_Content_Form from './components/CreateVoucher_Content_Form'
+import CreateVoucherContentHeader from './components/CreateVoucher_Content_Header'
+import CreateVoucherContentForm from './components/CreateVoucher_Content_Form'
 //actions
 //selector
 //function
 //constants
 //styled
-const CreateVoucher_Content = () => {
-    // -------------------------- VAR ---------------------------
-    // -------------------------- STATE -------------------------
-    // -------------------------- REDUX -------------------------
-    // -------------------------- FUNCTION ----------------------
-    // -------------------------- EFFECT ------------------------
-    // -------------------------- RENDER ------------------------
-    // -------------------------- MAIN --------------------------
+const CreateVoucherContent = () => {
+  // -------------------------- VAR ---------------------------
+  // -------------------------- STATE -------------------------
+  // -------------------------- REDUX -------------------------
+  // -------------------------- FUNCTION ----------------------
+  // -------------------------- EFFECT ------------------------
+  // -------------------------- RENDER ------------------------
+  // -------------------------- MAIN --------------------------
 
   return (
     <Content className='p-8'>
-        <Layout className='p-6 bg-white rounded-md'>
-            <CreateVoucher_Content_Header/>
-            <Divider></Divider>
-            <CreateVoucher_Content_Form/>
-        </Layout>
+      <Layout className='p-6 bg-white rounded-md'>
+        <CreateVoucherContentHeader />
+        <Divider></Divider>
+        <CreateVoucherContentForm />
+      </Layout>
     </Content>
   )
 }
 
-export default CreateVoucher_Content
+export default CreateVoucherContent

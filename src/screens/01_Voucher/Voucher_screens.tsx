@@ -1,6 +1,6 @@
 //node_modules
 //components
-import Voucher_Content from "./components/Voucher_Content"
+import VoucherContent from "./components/Voucher_Content"
 //actions
 //selector
 //function
@@ -8,7 +8,7 @@ import Voucher_Content from "./components/Voucher_Content"
 //styled
 
 
-const Voucher = () => { 
+const VoucherScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,8 +17,8 @@ const Voucher = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <Voucher_Content/>
+    <VoucherContent />
   )
 }
 
-export default Voucher
+export default VoucherScreens

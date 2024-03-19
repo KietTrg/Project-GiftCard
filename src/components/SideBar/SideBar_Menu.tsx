@@ -12,7 +12,7 @@ import { iconQuanLyVoucher, iconTaoVoucher, iconVoucher } from "../svg/iconDashb
 
 type MenuItem = GetProp<MenuProps, 'items'>[number]
 
-const Voucher_Menu = () => {
+const VoucherMenu = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -21,7 +21,7 @@ const Voucher_Menu = () => {
     label: React.ReactNode,
     key?: React.Key | null,
     icon?: React.ReactNode,
-   
+
   ): MenuItem => {
     return {
       label,
@@ -32,19 +32,20 @@ const Voucher_Menu = () => {
   // -------------------------- EFFECT ------------------------
   // -------------------------- RENDER ------------------------
   const items: MenuItem[] = [
-    getItem(<Link to='/'>Voucher</Link>,'Voucher',iconVoucher()),
-    getItem(<Link to='/create-voucher'>Tạo voucher</Link>,'Tạo voucher',iconTaoVoucher()),
-    getItem(<Link to='/voucher-management'>Quản lý voucher</Link>,'Quản lý voucher',iconQuanLyVoucher())
+    getItem(<Link to='/'>Voucher</Link>, 'Voucher', iconVoucher()),
+    getItem(<Link to='/create-voucher'>Tạo voucher</Link>, 'Tạo voucher', iconTaoVoucher()),
+    getItem(<Link to='/voucher-management'>Quản lý voucher</Link>, 'Quản lý voucher', iconQuanLyVoucher())
   ]
   // -------------------------- MAIN --------------------------
   return (
     <Menu
-    defaultSelectedKeys={['Voucher']}
-    className="font-bold mr-10" 
-    items={items}
+      mode="inline"
+      defaultSelectedKeys={['Voucher']}
+      className=" pr-10"
+      items={items}
     >
     </Menu>
   )
 }
 
-export default Voucher_Menu
+export default VoucherMenu

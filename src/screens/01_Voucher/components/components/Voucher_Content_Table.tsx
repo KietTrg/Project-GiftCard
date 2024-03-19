@@ -7,8 +7,8 @@ import { Table } from 'antd'
 //constants
 //styled
 
-const Voucher_Content_Table = () => {
-    // -------------------------- VAR ---------------------------
+const VoucherContentTable = () => {
+  // -------------------------- VAR ---------------------------
   const columns = [
     {
       title: 'Mã voucher',
@@ -42,4 +42,4 @@ const Voucher_Content_Table = () => {
   )
 }
 
-export default Voucher_Content_Table
+export default VoucherContentTable

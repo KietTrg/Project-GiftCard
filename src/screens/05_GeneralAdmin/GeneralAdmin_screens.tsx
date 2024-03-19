@@ -1,12 +1,12 @@
 //node_modules
 //components
-import GeneralAdmin_Content from "./components/GeneralAdmin_Content"
+import GeneralAdminContent from "./components/GeneralAdmin_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-const GeneralAdmin = () => {
+const GeneralAdminScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -15,8 +15,8 @@ const GeneralAdmin = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <GeneralAdmin_Content />
+    <GeneralAdminContent />
   )
 }
 
-export default GeneralAdmin
+export default GeneralAdminScreens

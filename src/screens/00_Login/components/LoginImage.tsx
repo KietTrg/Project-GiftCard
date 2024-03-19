@@ -7,7 +7,7 @@ import { Image } from 'antd'
 //constants
 //styled
 
-const Login_qr = () => {
+const LoginImage = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -16,8 +16,8 @@ const Login_qr = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <Image src='./images/Login_Image.png' height="100vh" style={{padding: '10px', width:'670px', objectFit:'cover'}}/>
+    <Image preview={false} src='./images/Login_Image.png' height="100vh" style={{ padding: '10px', width: '670px', objectFit: 'cover' }} />
   )
 }
 
-export default Login_qr
+export default LoginImage

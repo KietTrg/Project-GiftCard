@@ -7,7 +7,7 @@ import { Button, Col, Input, Row } from 'antd'
 //constants
 //styled
 
-const Voucher_Content_Search = () => {
+const VoucherContentSearch = () => {
   // -------------------------- VAR -------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,16 +17,16 @@ const Voucher_Content_Search = () => {
   // -------------------------- MAIN --------------------------
   return (
     <Row className='flex gap-2'>
-    <Col className='py-2'>
-      <Input className='h-[40px]' placeholder='Nhập mã voucher'></Input>
-    </Col>
-    <Col className='py-2'>
-      <Button type='primary' >
-        Tìm kiếm
-      </Button>
-    </Col>
-  </Row>
+      <Col className='py-2'>
+        <Input className='h-[40px]' placeholder='Nhập mã voucher'></Input>
+      </Col>
+      <Col className='py-2'>
+        <Button type='primary' >
+          Tìm kiếm
+        </Button>
+      </Col>
+    </Row>
   )
 }
 
-export default Voucher_Content_Search
+export default VoucherContentSearch

@@ -2,14 +2,14 @@
 import { Divider, Layout } from "antd"
 import { Content } from "antd/es/layout/layout"
 //components
-import DepositAdmin_Content_Header from "./componets/DepositAdmin_Content_Header"
-import DepositAdmin_Content_Form from "./componets/DespositAdmin_Content_Form"
+import DepositAdminContentForm from "./componets/DespositAdmin_Content_Form"
+import DepositAdminContentHeader from "./componets/DepositAdmin_Content_Header"
 //actions
 //selector
 //function
 //constants
 //styled
-const DepositAdmin_Content = () => {
+const DepositAdminContent = () => {
     // -------------------------- VAR ---------------------------
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
@@ -20,12 +20,12 @@ const DepositAdmin_Content = () => {
     return (
         <Content className='p-8'>
             <Layout className='p-6 bg-white rounded-md'>
-                <DepositAdmin_Content_Header />
+                <DepositAdminContentHeader />
                 <Divider></Divider>
-                <DepositAdmin_Content_Form />
+                <DepositAdminContentForm />
             </Layout>
         </Content>
     )
 }
 
-export default DepositAdmin_Content
+export default DepositAdminContent

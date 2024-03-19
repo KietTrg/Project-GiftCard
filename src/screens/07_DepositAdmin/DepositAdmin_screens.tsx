@@ -1,12 +1,12 @@
 //node_modules
 //components
-import DepositAdmin_Content from "./components/DepositAdmin_Content"
+import DepositAdminContent from "./components/DepositAdmin_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-const DepositAdmin = () => {
+const DepositAdminScreens = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -15,8 +15,8 @@ const DepositAdmin = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <DepositAdmin_Content />
+    <DepositAdminContent />
   )
 }
 
-export default DepositAdmin
+export default DepositAdminScreens

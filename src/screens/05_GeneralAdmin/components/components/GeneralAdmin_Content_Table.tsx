@@ -1,5 +1,5 @@
 //node_modules
-import { Col, DatePicker, Flex, Input, Row, Space, Table, TableProps, Typography } from "antd"
+import { Card, Col, DatePicker, Flex, Input, Row, Space, Table, TableProps, Typography } from "antd"
 import dayjs from "dayjs"
 //components
 import { iconSearch } from "../../../../components/svg/iconDashboard"
@@ -16,7 +16,7 @@ type TableData = {
     price?: number;
     intoMoney?: number;
 }
-const GeneralAdmin_Content_Table = () => {
+const GeneralAdminContentTable = () => {
     // -------------------------- VAR ---------------------------
     const columns: TableProps<TableData>['columns'] = [
         {
@@ -48,6 +48,7 @@ const GeneralAdmin_Content_Table = () => {
             title: 'Thành tiền (VNDC)',
             dataIndex: 'intoMoney',
             key: 'intoMoney',
+
         },
     ]
     // -------------------------- STATE -------------------------
@@ -57,29 +58,32 @@ const GeneralAdmin_Content_Table = () => {
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
     return (
-        <Flex vertical className="bg-white px-4 py-6 mt-8 rounded-md">
+        <Card className="bg-white mt-8 rounded-md">
             <Row >
-                <Col span={7}>
-                    <Typography.Title className="py-4 w-full" level={2}>Lịch sử giao dịch</Typography.Title>
+                <Col lg={7} md={24} >
+                    <Typography.Title className="py-3 w-full" level={2}>Lịch sử giao dịch</Typography.Title>
                 </Col>
-                <Col span={17}>
-                    <Flex gap={5}>
-                        <Input className="py-2 w-[500px] mr-3 text-lg" prefix={iconSearch()} placeholder="Tìm kiếm"></Input>
-                        <Space className="relative ">
-                            <DatePicker className=' py-4 ' format={'DD/MM/YYYY'} defaultValue={dayjs(Date.now())}></DatePicker>
+                <Col lg={17} md={24} >
+                    <Row gutter={[15, { md: 15 }]}>
+                        <Col md={12}>
+                            <Input className=" p-3 text-lg" prefix={iconSearch()} placeholder="Tìm kiếm"></Input>
+                        </Col>
+                        <Col md={6} style={{ padding: 0 }}>
+                            <DatePicker className='text-lg p-3 w-full' format={'DD/MM/YYYY'} defaultValue={dayjs(Date.now())}></DatePicker>
                             <Typography.Text className="absolute left-3 -top-3 z-30 bg-white" style={{ color: 'gray' }}>Từ ngày</Typography.Text>
-                        </Space>
-                        <Space className="relative">
-                            <DatePicker className='w-full py-4' format={'DD/MM/YYYY'} defaultValue={dayjs(Date.now())}></DatePicker>
+                        </Col>
+                        <Col md={6} style={{ padding: 0 }}>
+                            <DatePicker className='text-lg p-3 w-full' format={'DD/MM/YYYY'} defaultValue={dayjs(Date.now())}></DatePicker>
                             <Typography.Text className="absolute left-3 -top-3 z-30 bg-white" style={{ color: 'gray' }}>Đến ngày</Typography.Text>
-                        </Space>
-                    </Flex>
+
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
-            <Table columns={columns}></Table>
-        </Flex>
+            <Table scroll={{ x: 'max-content' }} columns={columns}></Table>
+        </Card>
 
     )
 }
 
-export default GeneralAdmin_Content_Table
+export default GeneralAdminContentTable
