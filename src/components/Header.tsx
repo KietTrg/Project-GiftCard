@@ -11,9 +11,10 @@ import { Header } from "antd/es/layout/layout"
 //styled
 type Props = {
   isLogin: boolean;
+  isAdmin: boolean;
   logout: () => void
 }
-const Voucher_Header = ({isLogin, logout}: Props) => {
+const Voucher_Header = ({isLogin, isAdmin, logout}: Props) => {
  // -------------------------- VAR ---------------------------
  const pathname = useLocation()
  const navigate = useNavigate()
@@ -33,6 +34,18 @@ const Voucher_Header = ({isLogin, logout}: Props) => {
     if(pathname.pathname == '/voucher-management'){
       setChangeName('Quản lý voucher')
     }
+    if(pathname.pathname == '/admin'){
+      setChangeName('Tạo Admin')
+    }
+    if(pathname.pathname == '/admin/general'){
+      setChangeName('Tổng quan')
+    }
+    if(pathname.pathname == '/admin/admin-list'){
+      setChangeName('Danh sách Admin')
+    }
+    if(pathname.pathname == '/admin/deposit'){
+      setChangeName('Kí quỹ')
+    }
   },[pathname])
   useEffect(()=>{
     if(!isLogin){
@@ -49,7 +62,7 @@ const Voucher_Header = ({isLogin, logout}: Props) => {
               label:(
                 <Button style={{border:'none'}} onClick={logout}>Đăng xuất</Button>
               )
-            }]}}><img className="rounded-full w-[40px] h-[40px]" src="../images/Logo_Header.png"></img></Dropdown>}
+            }]}}><img className=" w-[35px] h-[40px]" src={isAdmin ?"../images/Icon_Group.png": "../images/Logo_Header.png"}></img></Dropdown>}
     </Header>
   )
 }

@@ -7,17 +7,17 @@ import { ThemeConfig } from "antd";
 //constants
 //styled
 export const them: ThemeConfig = {
-    components:{
-        Typography:{
-            colorText: '#fff',
+    components: {
+        Typography: {
+            colorText: '#000',
             titleMarginBottom: 0,
             titleMarginTop: 0
         },
-        
-        Layout:{
+
+        Layout: {
             siderBg: '#01227A'
         },
-        Menu:{
+        Menu: {
             itemBg: '#01227A',
             itemSelectedBg: '#002990',
             itemSelectedColor: 'white',

@@ -1,14 +1,12 @@
 //node_modules
 //components
-import ManageVoucher_Content from "./components/ManageVoucher_Content"
+import DepositAdmin_Content from "./components/DepositAdmin_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-
-
-const VoucherManger = () => {
+const DepositAdmin = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,8 +15,8 @@ const VoucherManger = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <ManageVoucher_Content />
+    <DepositAdmin_Content />
   )
 }
 
-export default VoucherManger
+export default DepositAdmin

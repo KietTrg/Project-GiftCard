@@ -1,14 +1,12 @@
-//node_modules
 //components
-import ManageVoucher_Content from "./components/ManageVoucher_Content"
+//node_modules
+import CreateAdmin_Content from "./components/CreateAdmin_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-
-
-const VoucherManger = () => {
+const CreateAdmin = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,8 +15,8 @@ const VoucherManger = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <ManageVoucher_Content />
+    <CreateAdmin_Content />
   )
 }
 
-export default VoucherManger
+export default CreateAdmin

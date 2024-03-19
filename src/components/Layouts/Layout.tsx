@@ -1,33 +1,26 @@
 //node_modules
-import { Outlet, useNavigate } from "react-router-dom"
-import {Layout} from 'antd'
+import { Outlet } from "react-router-dom"
+import { Layout } from 'antd'
+import { useContext } from "react"
 //components
 import Header from "../Header"
 import SideBar from "../SideBar"
-import { AuthContext } from "../../context/authContext"
-import { useContext, useEffect } from "react"
 //actions
 //selector
 //function
 //constants
+//context
+import { AuthContext } from "../../context/authContext"
 //styled
 const LayoutGiftCard = () => {
-  const {isLogin, logout} =  useContext(AuthContext)
-  
-  
+  const { isLogin, logout, isAdmin } = useContext(AuthContext)
   return (<Layout className="min-h-screen relative">
-          <SideBar/>
-          <Layout>
-            <Header isLogin={isLogin} logout={logout}/>
-            <Outlet></Outlet>
-          </Layout>
-       </Layout>
-    
-      
-        
-      
-  
-     
+    <SideBar isAdmin={isAdmin} />
+    <Layout>
+      <Header isLogin={isLogin} logout={logout} isAdmin={isAdmin} />
+      <Outlet></Outlet>
+    </Layout>
+  </Layout>
   )
 }
 

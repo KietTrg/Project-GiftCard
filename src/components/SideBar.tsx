@@ -4,12 +4,16 @@ import Sider from "antd/es/layout/Sider"
 import Voucher_Logo from "./SideBar/SideBar_Logo"
 import Voucher_Menu from "./SideBar/SideBar_Menu"
 import { Space } from "antd"
+import Admin_Menu from "./SideBar/SideBar_Admin"
 //actions
 //selector
 //function
 //constants
 //styled
-const Voucher_SideBar = () => {
+type Props = {
+  isAdmin: boolean
+}
+const Voucher_SideBar = ({isAdmin}: Props) => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -21,7 +25,7 @@ const Voucher_SideBar = () => {
     <Sider width="250px" className="relative" >
       <Space direction="vertical" className="flex-none fixed top-0 bottom-0 w-[250px]">
         <Voucher_Logo/>
-        <Voucher_Menu/>
+        {isAdmin ?<Admin_Menu/> : <Voucher_Menu/>}
       </Space>
   </Sider>
   )

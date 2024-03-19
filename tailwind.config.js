@@ -14,4 +14,7 @@ export default {
     },
   },
   plugins: [],
+  corePlugins: {
+    opacity: false,
+  },
 };

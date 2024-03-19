@@ -108,7 +108,7 @@ const CreateVoucher_Content_Form = () => {
                     </Col>
                     <Divider></Divider>
                 </Row>
-        </Flex>
+    </Flex>
   )
 }
 

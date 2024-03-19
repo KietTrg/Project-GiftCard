@@ -1,14 +1,12 @@
 //node_modules
 //components
-import ManageVoucher_Content from "./components/ManageVoucher_Content"
+import AdminList_Content from "./components/AdminList_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-
-
-const VoucherManger = () => {
+const AdminList = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,8 +15,8 @@ const VoucherManger = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <ManageVoucher_Content />
+    <AdminList_Content />
   )
 }
 
-export default VoucherManger
+export default AdminList

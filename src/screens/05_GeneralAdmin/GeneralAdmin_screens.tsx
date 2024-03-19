@@ -1,14 +1,12 @@
 //node_modules
 //components
-import ManageVoucher_Content from "./components/ManageVoucher_Content"
+import GeneralAdmin_Content from "./components/GeneralAdmin_Content"
 //actions
 //selector
 //function
 //constants
 //styled
-
-
-const VoucherManger = () => {
+const GeneralAdmin = () => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
@@ -17,8 +15,8 @@ const VoucherManger = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <ManageVoucher_Content />
+    <GeneralAdmin_Content />
   )
 }
 
-export default VoucherManger
+export default GeneralAdmin
