@@ -14,11 +14,10 @@ import { AuthContext } from "../../context/authContext"
 //styled
 const LayoutGiftCard = () => {
   const { isLogin, logout, isAdmin } = useContext(AuthContext)
-
   return (
     <Layout className="min-h-screen">
       <SideBar isAdmin={isAdmin} />
-      <Layout>
+      <Layout className={`xxl:ml-[20%] lg:ml-0 `}>
         <HeaderDashboard isLogin={isLogin} logout={logout} isAdmin={isAdmin} />
         <Outlet></Outlet>
       </Layout>

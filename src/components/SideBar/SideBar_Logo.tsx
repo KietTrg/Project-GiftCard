@@ -15,9 +15,9 @@ const SideLogo = () => {
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
-    <Space className='m-4 flex gap-3 items-center'>
+    <Space className='m-4 flex md:flex-col gap-3 items-center md:justify-center'>
       <Image preview={false} width='54px' src='../images/Icon_Dashboard.png'></Image>
-      <Typography.Title style={{ color: 'white' }} level={3}>GIFTCARD</Typography.Title>
+      <Typography.Title className='sm:hidden' style={{ color: 'white' }} level={3}>GIFTCARD</Typography.Title>
     </Space>
   )
 }

@@ -14,16 +14,18 @@ import { them } from './theme/them.tsx'
 //styled
 import './index.css'
 import 'antd/dist/reset.css'
-import store from './stores/index.ts';
+import store, { persiststore } from './stores/index.ts';
+import { PersistGate } from 'redux-persist/integration/react';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
 
     <AuthProvider>
       <ConfigProvider theme={them}>
         <Provider store={store}>
-          <App />
+          <PersistGate persistor={persiststore} loading={null}>
+            <App />
+          </PersistGate>
         </Provider>
-
       </ConfigProvider>
     </AuthProvider>
   </React.StrictMode>,

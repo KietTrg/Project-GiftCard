@@ -1,11 +1,12 @@
 //node_modules
 import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
-import { Button, Dropdown, Typography } from "antd"
+import { Button, Col, Dropdown, Flex, Row, Space, Typography } from "antd"
 import { Header } from "antd/es/layout/layout"
 import { useDispatch, useSelector } from "react-redux"
 import { show } from "../stores/reducers/dashboard_reducer"
-import { RootState } from "../stores/index"
+import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
+import { RootState } from "../stores"
 //components
 //actions
 //selector
@@ -21,13 +22,16 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
   // -------------------------- VAR ---------------------------
   const pathname = useLocation()
   const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const isShow = useSelector((state: RootState) => state.dashboard.isShow)
-  console.log('isShow: ', isShow);
+
   // -------------------------- STATE -------------------------
   const [changeName, setChangeName] = useState<string>('Voucher')
   // -------------------------- REDUX -------------------------
+  const dispatch = useDispatch()
+  const { isShow } = useSelector((state: RootState) => state.dashboard)
   // -------------------------- FUNCTION ----------------------
+  const handleShow = () => {
+    dispatch(show())
+  }
   // -------------------------- EFFECT ------------------------
   useEffect(() => {
     if (pathname.pathname == '/') {
@@ -61,16 +65,23 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
   // -------------------------- MAIN --------------------------
   return (
     <Header className="bg-white h-[79px] flex items-center justify-between">
-      <Button onClick={() => dispatch(show())}></Button>
+
       <Typography.Title level={2} style={{ color: 'GrayText' }}>{changeName as string}</Typography.Title>
-      {isLogin && <Dropdown menu={{
-        items: [{
-          key: '1',
-          label: (
-            <Button style={{ border: 'none' }} onClick={logout}>Đăng xuất</Button>
-          )
-        }]
-      }}><img className=" w-[35px] h-[40px]" src={isAdmin ? "../images/Icon_Group.png" : "../images/Logo_Header.png"}></img></Dropdown>}
+
+      <Row align='middle' justify='center'>
+        <Col xl={0}><Button onClick={handleShow} className="border-0 items-center flex ">{isShow ? <AiOutlineMenuFold size={25} /> : <AiOutlineMenuUnfold size={25} />}</Button></Col>
+
+        <Col xl={24}>
+          {isLogin && <Dropdown menu={{
+            items: [{
+              key: '1',
+              label: (
+                <Button style={{ border: 'none' }} onClick={logout}>Đăng xuất</Button>
+              )
+            }]
+          }}><img className=" w-[35px] h-[40px]" src={isAdmin ? "../images/Icon_Group.png" : "../images/Logo_Header.png"}></img></Dropdown>}
+        </Col>
+      </Row>
     </Header>
   )
 }
