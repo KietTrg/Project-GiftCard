@@ -3,6 +3,9 @@ import { useEffect, useState } from "react"
 import { useLocation, useNavigate } from "react-router-dom"
 import { Button, Dropdown, Typography } from "antd"
 import { Header } from "antd/es/layout/layout"
+import { useDispatch, useSelector } from "react-redux"
+import { show } from "../stores/reducers/dashboard_reducer"
+import { RootState } from "../stores/index"
 //components
 //actions
 //selector
@@ -18,7 +21,9 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
   // -------------------------- VAR ---------------------------
   const pathname = useLocation()
   const navigate = useNavigate()
-
+  const dispatch = useDispatch()
+  const isShow = useSelector((state: RootState) => state.dashboard.isShow)
+  console.log('isShow: ', isShow);
   // -------------------------- STATE -------------------------
   const [changeName, setChangeName] = useState<string>('Voucher')
   // -------------------------- REDUX -------------------------
@@ -56,6 +61,7 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
   // -------------------------- MAIN --------------------------
   return (
     <Header className="bg-white h-[79px] flex items-center justify-between">
+      <Button onClick={() => dispatch(show())}></Button>
       <Typography.Title level={2} style={{ color: 'GrayText' }}>{changeName as string}</Typography.Title>
       {isLogin && <Dropdown menu={{
         items: [{

@@ -18,13 +18,13 @@ import store from './stores/index.ts';
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
 
-    <Provider store={store}>
-      <AuthProvider>
-        <ConfigProvider theme={them}>
+    <AuthProvider>
+      <ConfigProvider theme={them}>
+        <Provider store={store}>
           <App />
-        </ConfigProvider>
-      </AuthProvider>
-    </Provider>
+        </Provider>
 
+      </ConfigProvider>
+    </AuthProvider>
   </React.StrictMode>,
 )

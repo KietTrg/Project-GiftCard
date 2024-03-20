@@ -2,17 +2,22 @@ import { createSlice } from "@reduxjs/toolkit";
 
 
 interface dashboardType {
-    tricker: boolean
+    isShow: boolean;
+    
 }
-const initialState: dashboardType ={
-    tricker: false
+const init: dashboardType = {
+   isShow: false,
+  
 }
 export const dashboardReducer = createSlice({
     name: 'dashboard',
-    initialState,
+    initialState: init,
     reducers: {
-        onClickTricker: (state) => {
-            state.tricker = true
+        show(state) {
+            state.isShow = state.isShow === false ? true : false;
         }
-    }
+    },
+    
 })
+export const { show } = dashboardReducer.actions;
+export default dashboardReducer.reducer;
