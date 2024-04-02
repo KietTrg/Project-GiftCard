@@ -22,7 +22,9 @@ export const them: ThemeConfig = {
             itemSelectedBg: '#002990',
             itemSelectedColor: 'white',
             itemColor: "white",
-            itemHoverColor: 'white'
+            itemHoverColor: 'white',
+
+
         }
     }
 }

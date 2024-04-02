@@ -69,7 +69,7 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
       <Typography.Title level={2} style={{ color: 'GrayText' }}>{changeName as string}</Typography.Title>
 
       <Row align='middle' justify='center'>
-        <Col xl={0}><Button onClick={handleShow} className="border-0 items-center flex ">{isShow ? <AiOutlineMenuFold size={25} /> : <AiOutlineMenuUnfold size={25} />}</Button></Col>
+        <Col xl={0} lg={0}><Button onClick={handleShow} className="border-0 items-center flex ">{isShow ? <AiOutlineMenuFold size={25} /> : <AiOutlineMenuUnfold size={25} />}</Button></Col>
 
         <Col xl={24}>
           {isLogin && <Dropdown menu={{

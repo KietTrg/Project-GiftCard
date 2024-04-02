@@ -17,7 +17,7 @@ const LayoutGiftCard = () => {
   return (
     <Layout className="min-h-screen">
       <SideBar isAdmin={isAdmin} />
-      <Layout className={`xxl:ml-[20%] lg:ml-0 `}>
+      <Layout className={`xxl:ml-[21%] lg:ml-[21%] md:ml-0`}>
         <HeaderDashboard isLogin={isLogin} logout={logout} isAdmin={isAdmin} />
         <Outlet></Outlet>
       </Layout>

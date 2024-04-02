@@ -39,9 +39,9 @@ const VoucherMenu = () => {
   // -------------------------- MAIN --------------------------
   return (
     <Menu
-      mode="inline"
+
       defaultSelectedKeys={['Voucher']}
-      className=" pr-10"
+      className=" pr-10 xs:pr-0"
       items={items}
     >
     </Menu>

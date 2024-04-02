@@ -20,7 +20,7 @@ const SideBar = ({ isAdmin }: Props) => {
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
   const isShow = useSelector((state: RootState) => state.dashboard.isShow)
-  console.log('isShow: ', isShow);
+
   // -------------------------- FUNCTION ----------------------
   // -------------------------- EFFECT ------------------------
   // -------------------------- RENDER ------------------------
@@ -29,14 +29,13 @@ const SideBar = ({ isAdmin }: Props) => {
 
     <Sider
       trigger={null}
-      breakpoint="xl"
-      collapsedWidth={isShow ? "25%" : "0"}
-      width='20%'
+      breakpoint="lg"
+      collapsedWidth={isShow ? 160 : 0}
+      width='21%'
       style={{ minHeight: '100vh', position: 'fixed', zIndex: 60 }}
     >
       <SideLogo />
       {isAdmin ? <AdminMenu /> : <VoucherMenu />}
-
     </Sider>
 
   )

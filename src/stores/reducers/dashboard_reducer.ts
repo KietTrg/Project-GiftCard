@@ -1,6 +1,11 @@
+//node_modules
 import { createSlice } from "@reduxjs/toolkit";
-
-
+//components
+//actions
+//selector
+//function
+//constants
+//styled
 interface dashboardType {
     isShow: boolean;
     
