@@ -1,5 +1,5 @@
 //node_modules
-import { Card, Col, DatePicker, Flex, Input, Row, Space, Table, TableProps, Typography } from "antd"
+import { Card, Col, DatePicker, Input, Row, Table, TableProps, Typography } from "antd"
 import dayjs from "dayjs"
 //components
 import { iconSearch } from "../../../../components/svg/iconDashboard"

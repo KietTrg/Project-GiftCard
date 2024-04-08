@@ -19,8 +19,17 @@ interface DataType {
     description?: string;
     roles?: string;
 }
+interface OptionType {
+    value: string;
+    label: string;
+}
 const AdminListContent = () => {
     // -------------------------- VAR ---------------------------
+    const option: OptionType[] = [
+        { value: 'All', label: 'Tất cả' },
+        { value: 'Active', label: 'Đã kích hoạt' },
+        { value: 'Deactive', label: 'Ngưng kích hoạt' },
+    ]
     const columns: TableColumnsType<DataType> = [
         { title: 'User Name', width: 150, dataIndex: 'name', key: '1' },
         {
@@ -87,11 +96,7 @@ const AdminListContent = () => {
                         <Select
                             defaultValue="All"
                             className="w-[150px]"
-                            options={[
-                                { value: 'All', label: 'Tất cả' },
-                                { value: 'Active', label: 'Đã kích hoạt' },
-                                { value: 'Deactive', label: 'Ngưng kích hoạt' },
-                            ]}
+                            options={option}
                         />
                     </Flex>
                     <Table columns={columns} dataSource={data} scroll={{ x: 1400 }} />;

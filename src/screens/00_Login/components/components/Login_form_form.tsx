@@ -18,8 +18,7 @@ type FieldType = {
 const LoginFormForm = () => {
   // -------------------------- VAR ---------------------------
   const navigate = useNavigate()
-  const { login, isLogin } = useContext(AuthContext)
-  console.log('isLogin: ', isLogin);
+  const { login } = useContext(AuthContext)
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
   // -------------------------- FUNCTION ----------------------
