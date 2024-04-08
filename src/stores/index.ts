@@ -7,20 +7,25 @@ import {persistReducer, persistStore} from "redux-persist";
 //selector
 import rootReducer from "./rootReducer";
 import { dashboardReducer } from './reducers/dashboard_reducer';
+import { userReducer } from './reducers/user_reducer';
 //function
 //constants
 //styled
+
 const persistConfig  = {
-  key: 'root',
+  key: 'root/user',
   storage,
 };
-const dashboardConfig = {
+
+const userConfig = {
   ...persistConfig,
-  whitelist: ["isShow"],
+  whitelist: ["accessToken"],
 };
+
 const store = configureStore({
    reducer: {
-    dashboard: persistReducer(dashboardConfig, dashboardReducer.reducer)
+    dashboard: dashboardReducer.reducer,
+    user: persistReducer(userConfig, userReducer.reducer)
    }, 
    devTools: true,
   middleware: (getDefaultMiddleware) => {

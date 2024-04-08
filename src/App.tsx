@@ -10,6 +10,7 @@ import GeneralAdminScreens from "./screens/05_GeneralAdmin/GeneralAdmin_screens"
 import AdminListScreens from "./screens/06_AdminList/AdminList_screens"
 import CreateAdminScreens from "./screens/04_CreateAdmin/CreateAdmin_srceen"
 import DepositAdminScreens from "./screens/07_DepositAdmin/DepositAdmin_screens"
+
 //actions
 //selector
 //function

@@ -11,10 +11,16 @@ import SideBar from "../SideBar"
 //constants
 //context
 import { AuthContext } from "../../context/authContext"
+
+
+
 //styled
 const LayoutGiftCard = () => {
   const { isLogin, logout, isAdmin } = useContext(AuthContext)
+
+
   return (
+
     <Layout className="min-h-screen">
       <SideBar isAdmin={isAdmin} />
       <Layout className={`xxl:ml-[21%] lg:ml-[21%] md:ml-0`}>

@@ -4,10 +4,13 @@ import { combineReducers } from '@reduxjs/toolkit';
 //actions
 //selector
 import {dashboardReducer} from './reducers/dashboard_reducer'
+import { userReducer } from './reducers/user_reducer';
 //function
 //constants
 //styled
+
 const rootReducer = combineReducers({
-    dashboard: dashboardReducer.reducer
+    dashboard: dashboardReducer.reducer,
+    user: userReducer.reducer
 })
 export default rootReducer;
