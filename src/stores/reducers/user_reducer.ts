@@ -32,9 +32,12 @@ export const getCurrent = createAsyncThunk<void>(
     "user/current",
     async (_, { rejectWithValue }) => {
       const response = await apiGetUser();
-      console.log(response);
-    //   if (!response.success) return rejectWithValue(response);
-    //   return response.rs;
+      console.log('response: ', response);
+      if (response.statusText === 'OK'){ 
+        console.log('response.data: ', response.data);
+        return response.data
+      }
+      return rejectWithValue(response)
     }
   );
 interface UserType {
@@ -50,7 +53,6 @@ export const userReducer = createSlice({
         loginUser: (state, action) => {
             state.accessToken = action.payload.accessToken;
           },
-        
     },
     
 })

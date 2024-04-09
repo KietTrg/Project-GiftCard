@@ -3,7 +3,7 @@ import { Form, type FormProps, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/authContext';
 import { useContext } from 'react';
-import { apiLoginProvider, apiUserLogin } from '../../../../api';
+import { apiUserLogin } from '../../../../api';
 import { useDispatch } from 'react-redux';
 import { getCurrent, loginUser } from '../../../../stores/reducers/user_reducer';
 //components
@@ -37,13 +37,13 @@ const LoginFormForm = () => {
       dispatch(getCurrent())
     }
 
-    if (values.username === 'admin' && values.password === 'admin') {
-      login({ username: values?.username as string, password: values?.password as string })
-      navigate('/admin')
-    } else {
-      login({ username: values?.username as string, password: values?.password as string })
-      navigate('/')
-    }
+    // if (values.username === 'admin' && values.password === 'admin') {
+    //   login({ username: values?.username as string, password: values?.password as string })
+    //   navigate('/admin')
+    // } else {
+    //   login({ username: values?.username as string, password: values?.password as string })
+    //   navigate('/')
+    // }
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
