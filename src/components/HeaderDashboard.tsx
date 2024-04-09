@@ -7,18 +7,31 @@ import { useDispatch, useSelector } from "react-redux"
 import { show } from "../stores/reducers/dashboard_reducer"
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { RootState } from "../stores"
+import { logoutUser } from "../stores/reducers/user_reducer"
+import { apiUserLogout } from "../api"
 //components
 //actions
 //selector
 //function
 //constants
 //styled
+interface UserInfo {
+  address: string;
+  brandName: string;
+  description: string;
+  finalizationPaid: number;
+  isActive: boolean;
+  logo: string;
+  roles: string[];
+  username: string;
+  _id: string;
+}
 type Props = {
   isLogin: boolean;
   isAdmin: boolean;
-  logout: () => void
+  userInfo: UserInfo | null;
 }
-const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
+const HeaderDashboard = ({ isLogin, isAdmin, userInfo }: Props) => {
   // -------------------------- VAR ---------------------------
   const pathname = useLocation()
   const navigate = useNavigate()
@@ -31,6 +44,18 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
   // -------------------------- FUNCTION ----------------------
   const handleShow = () => {
     dispatch(show())
+  }
+  const logout = async () => {
+    try {
+
+      // await apiUserLogout()
+      localStorage.removeItem('accessToken')
+      dispatch(logoutUser({}))
+      navigate('/login')
+    } catch (error) {
+      console.log('error: ', error);
+
+    }
   }
   // -------------------------- EFFECT ------------------------
   useEffect(() => {
@@ -56,11 +81,6 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
       setChangeName('Kí quỹ')
     }
   }, [pathname])
-  useEffect(() => {
-    if (!isLogin) {
-      navigate('/login')
-    }
-  }, [isLogin])
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
@@ -79,7 +99,7 @@ const HeaderDashboard = ({ isLogin, isAdmin, logout }: Props) => {
                 <Button style={{ border: 'none' }} onClick={logout}>Đăng xuất</Button>
               )
             }]
-          }}><img className=" w-[35px] h-[40px]" src={isAdmin ? "../images/Icon_Group.png" : "../images/Logo_Header.png"}></img></Dropdown>}
+          }}><img className=" w-[35px] h-[40px]" src={isAdmin ? "../images/Icon_Group.png" : userInfo?.logo}></img></Dropdown>}
         </Col>
       </Row>
     </Header>

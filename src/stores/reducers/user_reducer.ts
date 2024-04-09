@@ -8,53 +8,65 @@ import { apiGetUser } from "../../api";
 //constants
 //styled
 
-
-  
-
-//   export const loginProvider = createAsyncThunk<
-//     void,
-//     string,
-//     { rejectValue: string }
-//   >(
-//     "user/current",
-//     async (accessToken, { rejectWithValue }) => {
-//       try {
-//         const response = await apiLoginProvider({ accessToken }); // Pass the accessToken as an object
-//         console.log(response);
-//         // Handle response data accordingly
-//       } catch (error: any) {
-//         return rejectWithValue(error.message);
-//       }
-//     }
-//   );
-
-export const getCurrent = createAsyncThunk<void>(
-    "user/current",
-    async (_, { rejectWithValue }) => {
-      const response = await apiGetUser();
-      console.log('response: ', response);
-      if (response.statusText === 'OK'){ 
-        console.log('response.data: ', response.data);
-        return response.data
-      }
-      return rejectWithValue(response)
+interface UserInfo {
+  address: string;
+  brandName: string;
+  description: string;
+  finalizationPaid: number;
+  isActive: boolean;
+  logo: string;
+  roles: string[];
+  username: string;
+  _id: string;
+}
+export const getCurrent = createAsyncThunk<UserInfo | null>(
+  "user/current",
+  async (_, { rejectWithValue }) => {
+    const response = await apiGetUser();
+    if (response.statusText === 'OK') {
+      return response.data.data as UserInfo
     }
-  );
+    return rejectWithValue(response)
+  }
+);
 interface UserType {
-    accessToken: string | null;
+  accessToken: string | null;
+  isLogin: boolean;
+  userInfo: UserInfo | null;
 }
 const init: UserType = {
-    accessToken: null
+  accessToken: null,
+  isLogin: false,
+  userInfo: null,
 }
 export const userReducer = createSlice({
-    name: 'user',
-    initialState:init,
-    reducers: {
-        loginUser: (state, action) => {
-            state.accessToken = action.payload.accessToken;
-          },
+  name: 'user',
+  initialState: init,
+  reducers: {
+    loginUser: (state, action) => {
+      state.accessToken = action.payload.accessToken;
+      state.isLogin = action.payload.isLogin
     },
-    
+    logoutUser: (state, _) => {
+      state.accessToken = null;
+      state.isLogin = false;
+      state.userInfo = null;
+    }
+  },
+  extraReducers: (builder) => {
+
+    builder.addCase(getCurrent.fulfilled, (state, action) => {
+
+      state.userInfo = action.payload;
+      state.isLogin = true;
+    });
+    builder.addCase(getCurrent.rejected, (state, _) => {
+      state.userInfo = null;
+      state.isLogin = false;
+      state.accessToken = null;
+
+    });
+  },
 })
-export const { loginUser } = userReducer.actions;
+export const { loginUser, logoutUser } = userReducer.actions;
 export default userReducer.reducer;

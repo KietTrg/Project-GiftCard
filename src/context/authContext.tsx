@@ -1,5 +1,8 @@
 //node_modules
+import useSelection from 'antd/es/table/hooks/useSelection';
 import React, { createContext, useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../stores';
 //components
 //actions
 //selector
@@ -33,6 +36,9 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<userData | null>(null)
 
   // -------------------------- REDUX -------------------------
+  // const { userInfo } = useSelector((state: RootState) => state.user)
+  // console.log('userInfo: ', userInfo);
+  // console.log('isLogin: ', isLogin);
   // -------------------------- FUNCTION ----------------------
   const login = (user: userData) => {
     setUser(user)
@@ -44,11 +50,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setIsAdmin(false)
   };
   // -------------------------- EFFECT ------------------------
-  useEffect(() => {
-    if (user?.username === 'admin' && user.password === 'admin') {
-      setIsAdmin(true)
-    }
-  }, [])
+
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
 

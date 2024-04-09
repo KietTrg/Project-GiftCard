@@ -1,6 +1,6 @@
 //node_modules
-import { Provider } from "react-redux";
-import store, { persiststore } from "./stores/index";
+import { Provider, useSelector } from "react-redux";
+import store, { RootState, persiststore } from "./stores/index";
 import { ConfigProvider } from "antd";
 import { them } from "./theme/them";
 import { PersistGate } from "redux-persist/integration/react";

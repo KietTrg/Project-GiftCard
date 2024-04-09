@@ -1,20 +1,27 @@
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../stores';
+import { logoutUser } from '../stores/reducers/user_reducer';
 
 
 
 export default function configAxios() {
-    
+
+    const dispatch = useDispatch()
+
+
+
+
+
     // console.log('accessToken: ', accessTokenTest);
-    
+
     axios.defaults.baseURL = 'https://dev-api.giftcards.vn/';
     // axios.defaults.baseURL = import.meta.env.REACT_APP_API_URL
     axios.defaults.headers["content-type"] = "application/json";
     // axios.defaults.timeout = 10000;
-    const {accessToken} = useSelector((state: RootState)=>state.user)
-    console.log('accessToken: ', accessToken);
+    const { accessToken } = useSelector((state: RootState) => state.user)
+    // console.log('accessToken: ', accessToken);
     let data = accessToken
     // let localDataString = window.localStorage.getItem("persist:root/user")
     // console.log('localDataString: ', localDataString);
@@ -22,17 +29,18 @@ export default function configAxios() {
     // const accessToken = localData?.accessToken 
     axios.interceptors.request.use(
         async (config) => {
-            
+
             if (data) {
-                console.log('data: ', data);
+                // console.log('data: ', data);
                 const decodedToken: any = jwtDecode(data);
                 // console.log('decodedToken: ', decodedToken);
                 const currentDate = new Date();
                 if (decodedToken.exp * 1000 < currentDate.getTime()) {
                     localStorage.removeItem('accessToken')
+                    dispatch(logoutUser({}))
                 } else {
                     config.headers.Authorization = `Bearer ${data}`
-                    console.log('Authorization: ', config.headers.Authorization);
+                    // console.log('Authorization: ', config.headers.Authorization);
                 }
             }
             return config
@@ -42,6 +50,6 @@ export default function configAxios() {
         },
     )
 
-    
+
 }
 

@@ -2,10 +2,11 @@
 import { Form, type FormProps, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../../context/authContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { apiUserLogin } from '../../../../api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getCurrent, loginUser } from '../../../../stores/reducers/user_reducer';
+import { RootState } from '../../../../stores';
 //components
 //actions
 //selector
@@ -25,30 +26,38 @@ const LoginFormForm = () => {
   const { login } = useContext(AuthContext)
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
+  const { isLogin, userInfo } = useSelector((state: RootState) => state.user)
+
   // -------------------------- FUNCTION ----------------------
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     const rs = await apiUserLogin({ username: values.username as string, password: values.password as string })
-
-
     if (rs.statusCode === 201) {
       dispatch(loginUser({
-        accessToken: rs.data.accessToken
+        accessToken: rs.data.accessToken,
+        isLogin: true
       }))
-      dispatch(getCurrent())
     }
-
-    // if (values.username === 'admin' && values.password === 'admin') {
-    //   login({ username: values?.username as string, password: values?.password as string })
-    //   navigate('/admin')
-    // } else {
-    //   login({ username: values?.username as string, password: values?.password as string })
-    //   navigate('/')
-    // }
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
   // -------------------------- EFFECT ------------------------
+  useEffect(() => {
+    if (isLogin) {
+      dispatch(getCurrent())
+    }
+
+
+  }, [isLogin])
+  useEffect(() => {
+    if (userInfo) {
+      if (userInfo.roles[0] === 'admin') {
+        navigate('/admin')
+      } else {
+        navigate('/')
+      }
+    }
+  }, [userInfo])
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
