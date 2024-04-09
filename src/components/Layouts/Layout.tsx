@@ -1,7 +1,7 @@
 //node_modules
 import { Outlet } from "react-router-dom"
 import { Layout } from 'antd'
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 //components
 import HeaderDashboard from "../HeaderDashboard"
 import SideBar from "../SideBar"
@@ -10,7 +10,6 @@ import SideBar from "../SideBar"
 //function
 //constants
 //context
-import { AuthContext } from "../../context/authContext"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../stores"
 import { getCurrent } from "../../stores/reducers/user_reducer"

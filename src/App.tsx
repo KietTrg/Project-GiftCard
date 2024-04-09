@@ -10,6 +10,8 @@ import GeneralAdminScreens from "./screens/05_GeneralAdmin/GeneralAdmin_screens"
 import AdminListScreens from "./screens/06_AdminList/AdminList_screens"
 import CreateAdminScreens from "./screens/04_CreateAdmin/CreateAdmin_srceen"
 import DepositAdminScreens from "./screens/07_DepositAdmin/DepositAdmin_screens"
+import { useSelector } from "react-redux"
+import { RootState } from "./stores"
 
 //actions
 //selector
@@ -34,6 +36,7 @@ function App() {
           <Route path="/create-voucher" element={<CreateVoucherScreens />}></Route>
           <Route path="/voucher-management" element={<VoucherMangerScreens />}></Route>
         </Route>
+
         <Route path="/admin" element={<LayoutGiftCard />}>
           <Route path="/admin" element={<CreateAdminScreens />} />
           <Route path="/admin/general" element={<GeneralAdminScreens />} />

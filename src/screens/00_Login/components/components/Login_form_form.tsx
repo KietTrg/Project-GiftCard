@@ -1,8 +1,7 @@
 //node_modules
 import { Form, type FormProps, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../../context/authContext';
-import { useContext, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { apiUserLogin } from '../../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrent, loginUser } from '../../../../stores/reducers/user_reducer';
@@ -23,8 +22,9 @@ const LoginFormForm = () => {
   // -------------------------- VAR ---------------------------
   const navigate = useNavigate()
   const dispatch = useDispatch()
-  const { login } = useContext(AuthContext)
   // -------------------------- STATE -------------------------
+  const [isAdmin, setIsAdmin] = useState<string>('login')
+
   // -------------------------- REDUX -------------------------
   const { isLogin, userInfo } = useSelector((state: RootState) => state.user)
 
@@ -37,6 +37,8 @@ const LoginFormForm = () => {
         isLogin: true
       }))
     }
+
+
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
@@ -46,18 +48,26 @@ const LoginFormForm = () => {
     if (isLogin) {
       dispatch(getCurrent())
     }
-
-
   }, [isLogin])
   useEffect(() => {
-    if (userInfo) {
-      if (userInfo.roles[0] === 'admin') {
-        navigate('/admin')
-      } else {
-        navigate('/')
-      }
+    if (userInfo?.roles[0] === "admin") {
+      setIsAdmin('admin')
+    } else if (userInfo?.roles[0] === "provider") {
+      setIsAdmin('provider')
+    } else {
+      setIsAdmin('login')
     }
-  }, [userInfo])
+  })
+  useEffect(() => {
+    if (isAdmin === 'admin') {
+      navigate('/admin')
+    } else if (isAdmin === 'provider') {
+      navigate('/')
+    } else {
+      navigate('/login')
+    }
+  }, [isAdmin])
+  console.log('admin', isAdmin)
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (

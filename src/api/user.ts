@@ -6,7 +6,7 @@ export const apiUserLogin = async (data: {
 }) => (await axios.post('v1/auth-admin/login', data)).data
 
 export const apiUserLogout = async () => {
-    await axios.post('v1/auth-admin/logout')
+    (await axios.post('v1/auth-admin/logout')).data
 }
 
 export const apiGetUser = async () => (
