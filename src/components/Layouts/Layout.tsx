@@ -18,20 +18,11 @@ import { getCurrent } from "../../stores/reducers/user_reducer"
 
 //styled
 const LayoutGiftCard = () => {
-  const dispatch = useDispatch()
-  const [isAdmin, setIsAdmin] = useState(false)
-  // const { isLogin, logout, isAdmin } = useContext(AuthContext)
-  // console.log('isAdmin: ', isAdmin);
-  // console.log('isLogin: ', isLogin);
-  const { userInfo, isLogin } = useSelector((state: RootState) => state.user)
-  useEffect(() => {
-    dispatch(getCurrent());
-  }, [])
-  useEffect(() => {
-    if (userInfo?.roles[0] === "admin") {
-      setIsAdmin(true)
-    }
-  })
+  const isLogin = false
+  const isAdmin = false
+  const userInfo = null
+
+
 
 
   return (

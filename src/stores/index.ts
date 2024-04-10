@@ -1,7 +1,7 @@
 //node_modules
-import {configureStore} from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import storage from "redux-persist/lib/storage";
-import {persistReducer, persistStore} from "redux-persist";
+import { persistReducer, persistStore } from "redux-persist";
 //components
 //actions
 //selector
@@ -12,7 +12,7 @@ import { userReducer } from './reducers/user_reducer';
 //constants
 //styled
 
-const persistConfig  = {
+const persistConfig = {
   key: 'root/user',
   storage,
 };
@@ -23,11 +23,11 @@ const userConfig = {
 };
 
 const store = configureStore({
-   reducer: {
-    dashboard: dashboardReducer.reducer,
+  reducer: {
+    // dashboard: dashboardReducer.reducer,
     user: persistReducer(userConfig, userReducer.reducer)
-   }, 
-   devTools: true,
+  },
+  devTools: true,
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware({
       serializableCheck: false,

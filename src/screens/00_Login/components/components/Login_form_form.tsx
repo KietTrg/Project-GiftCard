@@ -23,10 +23,10 @@ const LoginFormForm = () => {
   const navigate = useNavigate()
   const dispatch = useDispatch()
   // -------------------------- STATE -------------------------
-  const [isAdmin, setIsAdmin] = useState<string>('login')
+
 
   // -------------------------- REDUX -------------------------
-  const { isLogin, userInfo } = useSelector((state: RootState) => state.user)
+
 
   // -------------------------- FUNCTION ----------------------
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
@@ -44,30 +44,6 @@ const LoginFormForm = () => {
     console.log('Failed:', errorInfo);
   };
   // -------------------------- EFFECT ------------------------
-  useEffect(() => {
-    if (isLogin) {
-      dispatch(getCurrent())
-    }
-  }, [isLogin])
-  useEffect(() => {
-    if (userInfo?.roles[0] === "admin") {
-      setIsAdmin('admin')
-    } else if (userInfo?.roles[0] === "provider") {
-      setIsAdmin('provider')
-    } else {
-      setIsAdmin('login')
-    }
-  })
-  useEffect(() => {
-    if (isAdmin === 'admin') {
-      navigate('/admin')
-    } else if (isAdmin === 'provider') {
-      navigate('/')
-    } else {
-      navigate('/login')
-    }
-  }, [isAdmin])
-  console.log('admin', isAdmin)
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
