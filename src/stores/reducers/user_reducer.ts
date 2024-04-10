@@ -19,12 +19,14 @@ interface UserInfo {
   username: string;
   _id: string;
 }
+
 export const getCurrent = createAsyncThunk<UserInfo | null>(
   "user/current",
-  async (_, { rejectWithValue }) => {
-    const response = await apiGetUser();
-    if (response.statusText === 'OK') {
-      return response.data.data as UserInfo
+  async (accessToken, { rejectWithValue }) => {
+    const response = await apiGetUser(accessToken);
+    console.log('response: ', response.data);
+    if (response.statusCode === 200) {
+      return response.data as UserInfo
     }
     return rejectWithValue(response)
   }

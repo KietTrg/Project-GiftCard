@@ -1,7 +1,7 @@
 //node_modules
 import { Form, type FormProps, Input, Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { apiUserLogin } from '../../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrent, loginUser } from '../../../../stores/reducers/user_reducer';
@@ -27,6 +27,7 @@ const LoginFormForm = () => {
 
   // -------------------------- REDUX -------------------------
 
+  const { accessToken, userInfo } = useSelector((state: RootState) => state.user)
 
   // -------------------------- FUNCTION ----------------------
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
@@ -37,13 +38,25 @@ const LoginFormForm = () => {
         isLogin: true
       }))
     }
-
-
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
   // -------------------------- EFFECT ------------------------
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(getCurrent(accessToken))
+    }
+  }, [accessToken])
+  useEffect(() => {
+    if (userInfo?.roles[0] === 'admin') {
+      navigate('/admin')
+    }
+    if (userInfo?.roles[0] === 'provider') {
+      navigate('/')
+    }
+
+  })
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (

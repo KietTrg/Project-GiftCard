@@ -18,12 +18,22 @@ import { getCurrent } from "../../stores/reducers/user_reducer"
 
 //styled
 const LayoutGiftCard = () => {
-  const isLogin = false
-  const isAdmin = false
-  const userInfo = null
+  const dispatch = useDispatch()
+  const { isLogin, userInfo, accessToken } = useSelector((state: RootState) => state.user)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
+  useEffect(() => {
+    if (userInfo?.roles[0] === "admin") {
+      setIsAdmin(true)
+    }
+  }, [userInfo])
+  useEffect(() => {
+
+    if (accessToken) {
+      dispatch(getCurrent(accessToken))
+    }
 
 
-
+  }, [accessToken])
 
   return (
 

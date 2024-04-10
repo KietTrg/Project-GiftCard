@@ -8,7 +8,7 @@ import { show } from "../stores/reducers/dashboard_reducer"
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { RootState } from "../stores"
 import { logoutUser } from "../stores/reducers/user_reducer"
-import { apiUserLogout } from "../api"
+
 //components
 //actions
 //selector
