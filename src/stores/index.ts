@@ -1,5 +1,5 @@
 //node_modules
-import { AnyAction, ThunkDispatch, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 //components
@@ -8,7 +8,7 @@ import { persistReducer, persistStore } from "redux-persist";
 import rootReducer from "./rootReducer";
 import { dashboardReducer } from './reducers/dashboard_reducer';
 import { userReducer } from './reducers/user_reducer';
-import { useDispatch } from 'react-redux';
+
 //function
 //constants
 //styled
@@ -38,5 +38,3 @@ const store = configureStore({
 export default store;
 export const persiststore = persistStore(store);
 export type RootState = ReturnType<typeof rootReducer>;
-export type AppThunkDispatch = ThunkDispatch<RootState, any, AnyAction>;
-export const useAppDispatch = () => useDispatch<AppThunkDispatch>();

@@ -6,6 +6,7 @@ import { apiUserLogin } from '../../../../api';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrent, loginUser } from '../../../../stores/reducers/user_reducer';
 import { RootState } from '../../../../stores';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 //components
 //actions
 //selector
@@ -21,7 +22,7 @@ type FieldType = {
 const LoginFormForm = () => {
   // -------------------------- VAR ---------------------------
   const navigate = useNavigate()
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
   // -------------------------- STATE -------------------------
 
 

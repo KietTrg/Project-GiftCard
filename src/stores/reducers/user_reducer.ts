@@ -1,5 +1,5 @@
 //node_modules
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { apiGetUser } from "../../api";
 //components
 //actions
@@ -19,33 +19,35 @@ interface UserInfo {
   username: string;
   _id: string;
 }
-
-export const getCurrent = createAsyncThunk<UserInfo | null>(
+interface LoginPayload {
+  accessToken: string;
+  isLogin: boolean;
+}
+interface UserType {
+  accessToken: string | null;
+  isLogin: boolean;
+  userInfo: UserInfo | null;
+}
+export const getCurrent = createAsyncThunk<UserInfo | null, string>(
   "user/current",
   async (accessToken, { rejectWithValue }) => {
     const response = await apiGetUser(accessToken);
-    console.log('response: ', response.data);
     if (response.statusCode === 200) {
       return response.data as UserInfo
     }
     return rejectWithValue(response)
   }
 );
-interface UserType {
-  accessToken: string | null;
-  isLogin: boolean;
-  userInfo: UserInfo | null;
-}
-const init: UserType = {
+const initialState: UserType = {
   accessToken: null,
   isLogin: false,
   userInfo: null,
 }
 export const userReducer = createSlice({
   name: 'user',
-  initialState: init,
+  initialState,
   reducers: {
-    loginUser: (state, action) => {
+    loginUser: (state, action: PayloadAction<LoginPayload>) => {
       state.accessToken = action.payload.accessToken;
       state.isLogin = action.payload.isLogin
     },
@@ -58,10 +60,10 @@ export const userReducer = createSlice({
   extraReducers: (builder) => {
 
     builder.addCase(getCurrent.fulfilled, (state, action) => {
-
       state.userInfo = action.payload;
       state.isLogin = true;
     });
+
     builder.addCase(getCurrent.rejected, (state, _) => {
       state.userInfo = null;
       state.isLogin = false;

@@ -13,12 +13,13 @@ import SideBar from "../SideBar"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "../../stores"
 import { getCurrent } from "../../stores/reducers/user_reducer"
+import { ThunkDispatch } from "@reduxjs/toolkit"
 
 
 
 //styled
 const LayoutGiftCard = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
   const { isLogin, userInfo, accessToken } = useSelector((state: RootState) => state.user)
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
   useEffect(() => {
@@ -27,12 +28,9 @@ const LayoutGiftCard = () => {
     }
   }, [userInfo])
   useEffect(() => {
-
     if (accessToken) {
       dispatch(getCurrent(accessToken))
     }
-
-
   }, [accessToken])
 
   return (
