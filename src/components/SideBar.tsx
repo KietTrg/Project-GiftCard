@@ -12,14 +12,14 @@ import SideLogo from "./SideBar/SideBar_Logo"
 //constants
 //styled
 type Props = {
-  isAdmin: boolean;
+  isAdmin: string | undefined;
 
 }
 const SideBar = ({ isAdmin }: Props) => {
   // -------------------------- VAR ---------------------------
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
-  const isShow = useSelector((state: RootState) => state.dashboard.isShow)
+  const isShow = useSelector((state: RootState) => state.nav.isShow)
 
   // -------------------------- FUNCTION ----------------------
   // -------------------------- EFFECT ------------------------
@@ -35,7 +35,7 @@ const SideBar = ({ isAdmin }: Props) => {
       style={{ minHeight: '100vh', position: 'fixed', zIndex: 60 }}
     >
       <SideLogo />
-      {isAdmin ? <AdminMenu /> : <VoucherMenu />}
+      {isAdmin === "admin" ? <AdminMenu /> : <VoucherMenu />}
     </Sider>
 
   )

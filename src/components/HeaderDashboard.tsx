@@ -1,17 +1,16 @@
 //node_modules
 import { useEffect, useState } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
-import { Button, Col, Dropdown, Flex, Row, Space, Typography } from "antd"
+import { useLocation } from "react-router-dom"
+import { Button, Col, Dropdown, Row, Typography } from "antd"
 import { Header } from "antd/es/layout/layout"
 import { useDispatch, useSelector } from "react-redux"
-import { show } from "../stores/reducers/dashboard_reducer"
+import { show } from "../stores/reducers/nav/nav_slice"
 import { AiOutlineMenuFold, AiOutlineMenuUnfold } from "react-icons/ai";
 import { RootState } from "../stores"
-import { logoutUser } from "../stores/reducers/user_reducer"
-
 //components
 //actions
 //selector
+import { useAuth } from "../context/authContext"
 //function
 //constants
 //styled
@@ -27,35 +26,25 @@ interface UserInfo {
   _id: string;
 }
 type Props = {
-  isLogin: boolean;
-  isAdmin: boolean;
+  isLogin: string | null;
+  isAdmin: string | undefined;
   userInfo: UserInfo | null;
 }
 const HeaderDashboard = ({ isLogin, isAdmin, userInfo }: Props) => {
   // -------------------------- VAR ---------------------------
   const pathname = useLocation()
-  const navigate = useNavigate()
-
+  const { logoutUser } = useAuth()
   // -------------------------- STATE -------------------------
   const [changeName, setChangeName] = useState<string>('Voucher')
   // -------------------------- REDUX -------------------------
   const dispatch = useDispatch()
-  const { isShow } = useSelector((state: RootState) => state.dashboard)
+  const { isShow } = useSelector((state: RootState) => state.nav)
   // -------------------------- FUNCTION ----------------------
   const handleShow = () => {
     dispatch(show())
   }
-  const logout = async () => {
-    try {
-
-      // await apiUserLogout()
-      localStorage.removeItem('accessToken')
-      dispatch(logoutUser({}))
-      navigate('/login')
-    } catch (error) {
-      console.log('error: ', error);
-
-    }
+  const handleLogout = () => {
+    logoutUser()
   }
   // -------------------------- EFFECT ------------------------
   useEffect(() => {
@@ -96,10 +85,10 @@ const HeaderDashboard = ({ isLogin, isAdmin, userInfo }: Props) => {
             items: [{
               key: '1',
               label: (
-                <Button style={{ border: 'none' }} onClick={logout}>Đăng xuất</Button>
+                <Button style={{ border: 'none' }} onClick={handleLogout}>Đăng xuất</Button>
               )
             }]
-          }}><img className=" w-[35px] h-[40px]" src={isAdmin ? "../images/Icon_Group.png" : userInfo?.logo}></img></Dropdown>}
+          }}><img className=" w-[35px] h-[40px]" src={isAdmin === "admin" ? "../images/Icon_Group.png" : userInfo?.logo}></img></Dropdown>}
         </Col>
       </Row>
     </Header>

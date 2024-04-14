@@ -1,14 +1,8 @@
 //node_modules
 import { Form, type FormProps, Input, Button } from 'antd';
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
-import { apiUserLogin } from '../../../../api';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCurrent, loginUser } from '../../../../stores/reducers/user_reducer';
-import { RootState } from '../../../../stores';
-import { ThunkDispatch } from '@reduxjs/toolkit';
 //components
 //actions
+import { useAuth } from '../../../../context/authContext';
 //selector
 //function
 //constants
@@ -21,43 +15,18 @@ type FieldType = {
 };
 const LoginFormForm = () => {
   // -------------------------- VAR ---------------------------
-  const navigate = useNavigate()
-  const dispatch = useDispatch<ThunkDispatch<any, any, any>>()
+  const { loginUser } = useAuth()
   // -------------------------- STATE -------------------------
-
-
   // -------------------------- REDUX -------------------------
-
-  const { accessToken, userInfo } = useSelector((state: RootState) => state.user)
-
   // -------------------------- FUNCTION ----------------------
+
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
-    const rs = await apiUserLogin({ username: values.username as string, password: values.password as string })
-    if (rs.statusCode === 201) {
-      dispatch(loginUser({
-        accessToken: rs.data.accessToken,
-        isLogin: true
-      }))
-    }
+    loginUser({ username: values.username as string, password: values.password as string })
   };
   const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
   // -------------------------- EFFECT ------------------------
-  useEffect(() => {
-    if (accessToken) {
-      dispatch(getCurrent(accessToken))
-    }
-  }, [accessToken])
-  useEffect(() => {
-    if (userInfo?.roles[0] === 'admin') {
-      navigate('/admin')
-    }
-    if (userInfo?.roles[0] === 'provider') {
-      navigate('/')
-    }
-
-  })
   // -------------------------- RENDER ------------------------
   // -------------------------- MAIN --------------------------
   return (
@@ -69,7 +38,6 @@ const LoginFormForm = () => {
       autoComplete="off"
     >
       <Form.Item<FieldType>
-
         name="username"
         rules={[{ required: true, message: 'Please input your username!' }]}
       >
@@ -79,7 +47,6 @@ const LoginFormForm = () => {
       <Form.Item<FieldType>
         name="password"
         rules={[{ required: true, message: 'Please input your password!' }]}
-
       >
         <Input.Password placeholder='Password' />
       </Form.Item>
