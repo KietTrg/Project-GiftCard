@@ -47,7 +47,6 @@ const AdminMenu = () => {
     <Menu
       mode="inline"
       defaultSelectedKeys={['Create-admin']}
-      // style={{ paddingRight: 20 }}
       items={items}
     >
     </Menu>

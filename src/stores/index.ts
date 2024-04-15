@@ -9,6 +9,7 @@ import storage from 'redux-persist/lib/storage';
 //selector
 import nav_slice from './reducers/nav/nav_slice';
 import user_slice from './reducers/user/user_slice';
+import admin_slice from './reducers/admin/admin_slice';
 //function
 //constants
 //styled
@@ -22,7 +23,9 @@ const persistedReducer = persistReducer(
   persistConfig,
   combineReducers({
     nav: nav_slice,
-    user: user_slice
+    user: user_slice,
+    admin: admin_slice
+
   }),
 )
 let store: ReturnType<typeof makeStore>

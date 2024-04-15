@@ -1,12 +1,16 @@
 //node_modules
 import { Button, Flex, Image, Layout, Select, Table, TableColumnsType, Tag, Typography } from 'antd'
 import { Content } from 'antd/es/layout/layout'
-import React from 'react'
+import React, { useEffect } from 'react'
 //components
 //actions
 //selector
 //function
 import { formatMoney } from '../../../util/formatMoney';
+import { RootState, useAppDispatch } from '../../../stores';
+import { getAdminList } from '../../../stores/reducers/admin/admin_actions';
+import { useGobalSelector } from '../../../api/selector';
+import { useSelector } from 'react-redux';
 //constants
 //styled
 interface DataType {
@@ -25,6 +29,10 @@ interface OptionType {
 }
 const AdminListContent = () => {
     // -------------------------- VAR ---------------------------
+    const dispatch = useAppDispatch()
+    const { accessToken } = useGobalSelector()
+    const { dataList } = useSelector((state: RootState) => state.admin)
+
     const option: OptionType[] = [
         { value: 'All', label: 'Tất cả' },
         { value: 'Active', label: 'Đã kích hoạt' },
@@ -37,8 +45,8 @@ const AdminListContent = () => {
                 <Image src={logo}></Image>
             )
         },
-        { title: 'Đã thanh toán', width: 150, dataIndex: 'paid', key: '3', render: () => <Typography.Text>{formatMoney(1241247)}</Typography.Text> },
-        { title: 'Tổng tiền đã bán', width: 150, dataIndex: 'totalPaid', key: '4', render: () => <Typography.Text>{formatMoney(320000)}</Typography.Text> },
+        { title: 'Đã thanh toán', width: 150, dataIndex: 'paid', key: '3', render: (paid: number) => <Typography.Text>{formatMoney(paid)}</Typography.Text> },
+        { title: 'Tổng tiền đã bán', width: 150, dataIndex: 'totalPaid', key: '4', render: (totalPaid: number) => <Typography.Text>{formatMoney(totalPaid)}</Typography.Text> },
         {
             title: 'Trạng thái', dataIndex: 'status', key: '5', render: (status: string) => (
                 <span>
@@ -69,22 +77,26 @@ const AdminListContent = () => {
         },
     ];
 
-    const data: DataType[] = [
-        {
-            key: '1',
-            name: 'runtogether1',
-            logo: 'https://giftcard-portal-dev.s3.ap-southeast-1.amazonaws.com/logo/Logo%20-%20256x256.png',
-            paid: 1241247,
-            totalPaid: 320000,
-            status: 'Đã kích hoạt',
-            description: 'Tất cả sản phẩm được đội ngũ Run Together thiết kế dành riêng cho khách hàng muốn sở hữu những sản phẩm chỉ được tìm thấy duy nhất tại Run Together Shop.',
-            roles: 'Provider'
-        },
-    ];
+    const data: DataType[] = dataList?.map((el, index) => ({
+        key: index + 1,
+        name: el.username,
+        logo: el.logo,
+        paid: el.finalizationPaid ? el.finalizationPaid : 0,
+        totalPaid: el.finalizationAmount ? el.finalizationAmount : 0,
+        status: el.isActive ? 'Đã kích hoạt' : 'Ngưng kích hoạt',
+        description: el.description,
+        roles: el.roles[0],
+
+    })) || [];
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
     // -------------------------- FUNCTION ----------------------
     // -------------------------- EFFECT ------------------------
+    useEffect(() => {
+        if (accessToken) {
+            dispatch(getAdminList(accessToken))
+        }
+    }, [accessToken])
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
 

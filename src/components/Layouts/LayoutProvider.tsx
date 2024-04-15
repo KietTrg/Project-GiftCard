@@ -18,10 +18,9 @@ import { getProvider } from "../../stores/reducers/user/user_actions"
 const LayoutGiftCard = () => {
   // -------------------------- VAR ---------------------------
   const { token, isAdmin, user } = useAuth()
-  const { accessToken, roles } = useGobalSelector()
+  const { accessToken } = useGobalSelector()
   const dispatch = useAppDispatch()
-  console.log('isAdmin: ', isAdmin);
-  console.log('roles: ', roles);
+
   // -------------------------- STATE -------------------------
   // -------------------------- REDUX -------------------------
   // -------------------------- FUNCTION ----------------------
