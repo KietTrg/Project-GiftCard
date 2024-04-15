@@ -14,3 +14,10 @@ export const apiGetAdminGeneral = (accessToken: string | null) => axios({
         Authorization: `Bearer ${accessToken}`
     }
 })
+export const apiGetAdminDeposit = (accessToken: string | null) => axios({
+    url: '/v1/urbox-deposit',
+    method: "get",
+    headers: {
+        Authorization: `Bearer ${accessToken}`
+    }
+})

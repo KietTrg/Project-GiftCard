@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { apiGetAdminGeneral, apiGetAdminList } from "../../../api/admin";
+import { apiGetAdminDeposit, apiGetAdminGeneral, apiGetAdminList } from "../../../api/admin";
 interface AdminListInfo {
     _id: string;
     username: string;
@@ -12,6 +12,11 @@ interface AdminListInfo {
     finalizationPaid: number;
     finalizationAmount: number;
 }
+interface DepositType {
+    _id: string;
+    date: Date;
+    amount: number;
+}
 interface AdminList {
     data: AdminListInfo[]
 }
@@ -19,6 +24,9 @@ interface AdminGeneral {
     total: number,
     quantity: number,
     deposit: number
+}
+interface AdminDeposit {
+    data: DepositType[]
 }
 export const getAdminList = createAsyncThunk<AdminList, string>(
     "admin/getAdminList",
@@ -30,6 +38,7 @@ export const getAdminList = createAsyncThunk<AdminList, string>(
         return rejectWithValue(response)
     }
 );
+
 export const getAdminGeneral = createAsyncThunk<AdminGeneral, string>(
     "admin/getAdminGeneral",
     async (accessToken, { rejectWithValue }) => {
@@ -41,3 +50,13 @@ export const getAdminGeneral = createAsyncThunk<AdminGeneral, string>(
     }
 );
 
+export const getAdminDeposit = createAsyncThunk<AdminDeposit, string>(
+    "admin/getAdminDeposit",
+    async (accessToken, { rejectWithValue }) => {
+        const response = await apiGetAdminDeposit(accessToken);
+        if (response.status === 200) {
+            return response.data as AdminDeposit
+        }
+        return rejectWithValue(response)
+    }
+);

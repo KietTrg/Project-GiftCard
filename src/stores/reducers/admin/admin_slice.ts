@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAdminGeneral, getAdminList } from "./admin_actions";
+import { getAdminDeposit, getAdminGeneral, getAdminList } from "./admin_actions";
 
 interface AdminListInfo {
     _id: string;
@@ -18,10 +18,16 @@ interface adminGeneralType {
     quantity: number,
     deposit: number
 }
+interface DepositType {
+    _id: string;
+    date: Date;
+    amount: number;
+}
 
 interface adminListType {
     dataList: AdminListInfo[] | null,
-    dataGeneral: adminGeneralType
+    dataGeneral: adminGeneralType,
+    dataDeposit: DepositType[]
 }
 
 const initialState: adminListType = {
@@ -30,7 +36,8 @@ const initialState: adminListType = {
         total: 0,
         quantity: 0,
         deposit: 0
-    }
+    },
+    dataDeposit: []
 }
 export const adminList = createSlice({
     name: 'admin',
@@ -42,6 +49,9 @@ export const adminList = createSlice({
         })
         builder.addCase(getAdminGeneral.fulfilled, (state, actions) => {
             state.dataGeneral = actions.payload
+        })
+        builder.addCase(getAdminDeposit.fulfilled, (state, actions) => {
+            state.dataDeposit = actions.payload.data
         })
     }
 })
