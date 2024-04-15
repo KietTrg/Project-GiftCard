@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { apiGetAdminDeposit, apiGetAdminGeneral, apiGetAdminList } from "../../../api/admin";
-interface AdminListInfo {
+import { apiGetAdminDeposit, apiGetAdminGeneral, apiGetAdminList, apiGetAdminOrderList } from "../../../api/admin";
+interface AdminListInfoType {
     _id: string;
     username: string;
     brandName: string;
@@ -17,8 +17,37 @@ interface DepositType {
     date: Date;
     amount: number;
 }
+interface AdminOrderListType {
+    brandName: string;
+    chainId: string;
+    condition: string;
+    createdAt: string;
+    deliveryMethod: string;
+    email: string;
+    imgUrl: string;
+    isDelivery: boolean;
+    isNeedVerify: boolean;
+    itemId: string;
+    itemName: string;
+    offices: string[];
+    orderId: string;
+    paymentStatus: string;
+    phoneNo: string;
+    quantity: number;
+    status: string;
+    totalAmount: number;
+    totalAmountPaid: number;
+    transactionHash: string;
+    unitPrice: number;
+    updatedAt: string;
+    userId: string;
+    __v: number;
+    _id: string;
+}
+
+
 interface AdminList {
-    data: AdminListInfo[]
+    data: AdminListInfoType[]
 }
 interface AdminGeneral {
     total: number,
@@ -27,6 +56,22 @@ interface AdminGeneral {
 }
 interface AdminDeposit {
     data: DepositType[]
+}
+interface AdminOrderList {
+    data: {
+        orders: AdminOrderListType[],
+        total: number
+    }
+}
+interface GetAdminOrderListParams {
+    accessToken: string;
+    params: {
+        skip: number | null,
+        limit: number | null,
+        fromDate: string | null,
+        toDate: string | null,
+        search: string | null
+    }
 }
 export const getAdminList = createAsyncThunk<AdminList, string>(
     "admin/getAdminList",
@@ -60,3 +105,17 @@ export const getAdminDeposit = createAsyncThunk<AdminDeposit, string>(
         return rejectWithValue(response)
     }
 );
+
+export const getAdminOrderList = createAsyncThunk<AdminOrderList, GetAdminOrderListParams>(
+    "admin/getAdminOrderList",
+    async ({ accessToken, params }, { rejectWithValue }) => {
+        console.log('param: ', params);
+        const response = await apiGetAdminOrderList(accessToken, params);
+        console.log('response: ', response);
+        if (response.status === 200) {
+            return response.data as AdminOrderList
+        }
+        return rejectWithValue(response)
+    }
+);
+

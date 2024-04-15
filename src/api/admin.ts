@@ -21,3 +21,24 @@ export const apiGetAdminDeposit = (accessToken: string | null) => axios({
         Authorization: `Bearer ${accessToken}`
     }
 })
+
+export const apiGetAdminOrderList = (accessToken: string | null, params: {
+    skip: number | null,
+    limit: number | null,
+    fromDate: string | null,
+    toDate: string | null,
+    search: string | null
+}) => axios({
+    url: '/v1/orders/admin/list',
+    method: 'get',
+    params: {
+        skip: params.skip,
+        limit: params.limit,
+        fromDate: params.fromDate,
+        toDate: params.toDate,
+        search: params.search
+    },
+    headers: {
+        Authorization: `Bearer ${accessToken}`
+    },
+})

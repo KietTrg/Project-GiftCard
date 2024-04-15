@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAdminDeposit, getAdminGeneral, getAdminList } from "./admin_actions";
+import { getAdminDeposit, getAdminGeneral, getAdminList, getAdminOrderList } from "./admin_actions";
 
-interface AdminListInfo {
+interface AdminListInfoType {
     _id: string;
     username: string;
     brandName: string;
@@ -23,11 +23,41 @@ interface DepositType {
     date: Date;
     amount: number;
 }
-
+interface AdminOrderListType {
+    brandName: string;
+    chainId: string;
+    condition: string;
+    createdAt: string;
+    deliveryMethod: string;
+    email: string;
+    imgUrl: string;
+    isDelivery: boolean;
+    isNeedVerify: boolean;
+    itemId: string;
+    itemName: string;
+    offices: string[];
+    orderId: string;
+    paymentStatus: string;
+    phoneNo: string;
+    quantity: number;
+    status: string;
+    totalAmount: number;
+    totalAmountPaid: number;
+    transactionHash: string;
+    unitPrice: number;
+    updatedAt: string;
+    userId: string;
+    __v: number;
+    _id: string;
+}
 interface adminListType {
-    dataList: AdminListInfo[] | null,
+    dataList: AdminListInfoType[] | null,
     dataGeneral: adminGeneralType,
-    dataDeposit: DepositType[]
+    dataDeposit: DepositType[],
+    dataOrderList: {
+        order: AdminOrderListType[],
+        total: number
+    }
 }
 
 const initialState: adminListType = {
@@ -37,7 +67,11 @@ const initialState: adminListType = {
         quantity: 0,
         deposit: 0
     },
-    dataDeposit: []
+    dataDeposit: [],
+    dataOrderList: {
+        order: [],
+        total: 0
+    }
 }
 export const adminList = createSlice({
     name: 'admin',
@@ -52,6 +86,10 @@ export const adminList = createSlice({
         })
         builder.addCase(getAdminDeposit.fulfilled, (state, actions) => {
             state.dataDeposit = actions.payload.data
+        })
+        builder.addCase(getAdminOrderList.fulfilled, (state, actions) => {
+            state.dataOrderList.order = actions.payload.data.orders
+            state.dataOrderList.total = actions.payload.data.total
         })
     }
 })
