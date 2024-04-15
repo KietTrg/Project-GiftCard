@@ -6,14 +6,27 @@ import { iconConvert } from "../../../../components/svg/iconDashboard"
 //selector
 //function
 import { formatMoney } from "../../../../util/formatMoney"
+import { RootState, useAppDispatch } from "../../../../stores"
+import { useGobalSelector } from "../../../../api/selector"
+import { useEffect } from "react"
+import { getAdminGeneral } from "../../../../stores/reducers/admin/admin_actions"
+import { useSelector } from "react-redux"
 //constants
 //styled
 const GeneralAdminContentItems = () => {
     // -------------------------- VAR ---------------------------
+    const dispatch = useAppDispatch()
+    const { accessToken } = useGobalSelector()
+    const { dataGeneral } = useSelector((state: RootState) => state.admin)
     // -------------------------- STATE -------------------------
     // -------------------------- REDUX -------------------------
     // -------------------------- FUNCTION ----------------------
     // -------------------------- EFFECT ------------------------
+    useEffect(() => {
+        if (accessToken) {
+            dispatch(getAdminGeneral(accessToken))
+        }
+    }, [accessToken])
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
     return (
@@ -50,7 +63,7 @@ const GeneralAdminContentItems = () => {
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem3.png"></Image>
                         <Typography.Text>Tổng số tiền user quy đổi</Typography.Text>
                         <Flex justify="space-between">
-                            <Typography.Title level={4}>{formatMoney(55322025)}</Typography.Title>
+                            <Typography.Title level={4}>{formatMoney(dataGeneral.total)}</Typography.Title>
                             <Space className="bg-black text-white px-2 rounded-md">
                                 VNDC
                             </Space>
@@ -64,7 +77,7 @@ const GeneralAdminContentItems = () => {
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem4.png"></Image>
                         <Typography.Text>Số lượng quy đổi</Typography.Text>
                         <Flex justify="space-between">
-                            <Typography.Title level={4}>384</Typography.Title>
+                            <Typography.Title level={4}>{dataGeneral.quantity}</Typography.Title>
                             <Space className="bg-black text-white px-2 rounded-md">
                                 VNDC
                             </Space>
@@ -78,7 +91,7 @@ const GeneralAdminContentItems = () => {
                         <Image width={50} height={50} preview={false} src="../../../../../public/images/dashboardItem5.png"></Image>
                         <Typography.Text>Số lượng ký quỹ còn lại</Typography.Text>
                         <Flex justify="space-between">
-                            <Typography.Title style={{ color: 'red' }} level={4}>{formatMoney(-597025)}</Typography.Title>
+                            <Typography.Title style={{ color: 'red' }} level={4}>{formatMoney(dataGeneral.deposit)}</Typography.Title>
                             <Space className="bg-black text-white px-2 rounded-md">
                                 VNDC
                             </Space>
