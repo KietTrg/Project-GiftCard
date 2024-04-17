@@ -23,13 +23,17 @@ type TableData = {
     price?: string;
     intoMoney?: string;
 }
+interface PaginationInfo {
+    current: number;
+    pageSize: number;
+    total?: number;
+}
 const GeneralAdminContentTable = () => {
     // -------------------------- VAR ---------------------------
     const dispatch = useAppDispatch()
     const { accessToken } = useGobalSelector()
     const { dataOrderList } = useSelector((state: RootState) => state.admin)
-    console.log('dataOrderList: ', dataOrderList.order);
-    console.log('dataOrderList: ', dataOrderList.total);
+
     const columns: TableProps<TableData>['columns'] = [
         {
             title: 'Số lượng',
@@ -74,8 +78,11 @@ const GeneralAdminContentTable = () => {
 
     })) || []
     // -------------------------- STATE -------------------------
-    const [skip, setSkip] = useState<number | null>(null)
-    const [limit, setLimit] = useState<number | null>(10)
+    const [paginationInfo, setPaginationInfo] = useState<PaginationInfo>({
+        current: 1,
+        pageSize: 10,
+        total: 0,
+    });
     const [fromDate, setFromDate] = useState<string | null>('2023-09-20T17:00:00.000Z')
     const [toDate, setToDate] = useState<string | null>(dayjs(Date.now()).toISOString())
     const [search, setSearch] = useState<string>("")
@@ -87,21 +94,36 @@ const GeneralAdminContentTable = () => {
     const handleToDateChange = (dateTo: dayjs.Dayjs) => {
         setToDate(dateTo.toISOString());
     }
+
+    const handlePagination = (pagination: any) => {
+        setPaginationInfo({
+            current: pagination.current,
+            pageSize: pagination.pageSize,
+            total: pagination.total,
+        });
+
+    }
+
+
     // -------------------------- EFFECT ------------------------
+    const skipTemp = (paginationInfo.current - 1) * 10
+    const limitTemp = paginationInfo.pageSize
+    console.log('limitTemp: ', limitTemp);
     useEffect(() => {
         if (accessToken) {
             const params = {
-                skip,
-                limit,
+                skip: skipTemp,
+                limit: limitTemp,
                 fromDate,
                 toDate,
                 search
             }
             dispatch(getAdminOrderList({ accessToken, params }))
         }
-    }, [accessToken, skip, limit, fromDate, toDate, search])
+    }, [accessToken, skipTemp, limitTemp, fromDate, toDate, search])
     // -------------------------- RENDER ------------------------
     // -------------------------- MAIN --------------------------
+    // skip = Pagination.curren - 1
     return (
         <Card className="bg-white mt-8 rounded-md">
             <Row >
@@ -129,7 +151,9 @@ const GeneralAdminContentTable = () => {
                 scroll={{ x: 'max-content' }}
                 columns={columns}
                 dataSource={data}
-                pagination={{ total: dataOrderList.total }}></Table>
+                pagination={{ total: dataOrderList.total }}
+                onChange={handlePagination}
+            ></Table>
         </Card>
 
     )

@@ -10,6 +10,7 @@ import storage from 'redux-persist/lib/storage';
 import nav_slice from './reducers/nav/nav_slice';
 import user_slice from './reducers/user/user_slice';
 import admin_slice from './reducers/admin/admin_slice';
+import provider_slice from './reducers/provider/provider_slice';
 //function
 //constants
 //styled
@@ -24,7 +25,8 @@ const persistedReducer = persistReducer(
   combineReducers({
     nav: nav_slice,
     user: user_slice,
-    admin: admin_slice
+    admin: admin_slice,
+    provider: provider_slice
 
   }),
 )

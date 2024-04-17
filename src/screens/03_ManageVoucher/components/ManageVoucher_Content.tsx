@@ -1,7 +1,13 @@
 //node_modules
 import { Button, Flex, Layout, Select, Table, TableColumnsType } from 'antd'
 import { Content } from 'antd/es/layout/layout'
-import React from 'react'
+import { useEffect, useState } from 'react'
+import { useGobalSelector } from '../../../api/selector';
+import { RootState, useAppDispatch } from '../../../stores';
+import { getVoucherAll } from '../../../stores/reducers/provider/provider_actions';
+import { useSelector } from 'react-redux';
+import { formatMoney } from '../../../util/formatMoney';
+import moment from 'moment';
 
 //components
 //actions
@@ -10,7 +16,7 @@ import React from 'react'
 //constants
 //styled
 interface DataType {
-  key: React.Key;
+  key: number;
   name?: string;
   amount?: number;
   remainingAmount?: number;
@@ -19,10 +25,15 @@ interface DataType {
   promote?: string;
   value?: string;
   description?: string;
-  address?: string;
+  address?: string[];
 }
 const ManageVoucherContent = () => {
-  // -------------------------- VAR ---------------------------
+  // -------------------------- VAR ---------------------------\
+  const { accessToken } = useGobalSelector()
+  const { dataVoucher } = useSelector((state: RootState) => state.provider)
+  const dispatch = useAppDispatch()
+  let filteredData: any[]
+
   const columns: TableColumnsType<DataType> = [
     { title: 'Tên voucher', dataIndex: 'name', key: '1' },
     { title: 'Số lượng', dataIndex: 'amount', key: '2' },
@@ -42,25 +53,37 @@ const ManageVoucherContent = () => {
     },
   ];
 
-  const data: DataType[] = [
-    {
-      key: '1',
-      name: '[GiftCard Voucher] Runtogether 100,000 đ',
-      amount: 10,
-      remainingAmount: 8,
-      price: Number((100000).toFixed(1)).toLocaleString(),
-      promote: Number((100000).toFixed(1)).toLocaleString(),
-      value: Number((100000).toFixed(1)).toLocaleString(),
-      expireDate: '29-02-2024',
-      description: '- Thời gian áp dụng: Đến hết ngày 29/2/2024 ',
-      address: '81 Nguyễn Hiền, KDC 91B, An Khánh, Ninh Kiều, Cần Thơ',
-    },
-  ];
+
   // -------------------------- STATE -------------------------
+  const [selectOption, setSelectOption] = useState<string>("All")
+
   // -------------------------- REDUX -------------------------
   // -------------------------- FUNCTION ----------------------
+  const handleSelectChange = (value: string) => {
+    setSelectOption(value);
+  };
+  filteredData = selectOption === 'All' ? dataVoucher : dataVoucher.filter(el => el.price === parseInt(selectOption));
+
   // -------------------------- EFFECT ------------------------
+  useEffect(() => {
+    if (accessToken) {
+      dispatch(getVoucherAll(accessToken))
+    }
+  }, [accessToken])
   // -------------------------- RENDER ------------------------
+  const data: DataType[] = filteredData.map((el, index) => ({
+    key: index + 1,
+    name: el.name,
+    amount: el.amount,
+    remainingAmount: el.remainQuantity,
+    price: formatMoney(el.price),
+    promote: formatMoney(el.promoPrice),
+    value: formatMoney(el.value),
+    expireDate: moment(el.expireDate).format('DD/MM/YYYY'),
+    description: el.description,
+    address: el.addresses,
+
+  })) || []
   // -------------------------- MAIN --------------------------
 
   return (
@@ -69,6 +92,7 @@ const ManageVoucherContent = () => {
         <Flex vertical gap={20}>
           <Flex justify="end">
             <Select
+              onChange={handleSelectChange}
               defaultValue="All"
               className="w-[150px]"
               options={[
@@ -79,7 +103,7 @@ const ManageVoucherContent = () => {
               ]}
             />
           </Flex>
-          <Table columns={columns} dataSource={data} scroll={{ x: 1400 }} />;
+          <Table columns={columns} dataSource={data} scroll={{ x: 1400 }} pagination={{ total: dataVoucher.length }} />;
         </Flex>
       </Layout>
     </Content>
